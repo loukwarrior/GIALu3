@@ -141,9 +141,7 @@ const Header = () => {
                     </button>
                     
                     {/* Dropdown Menu - Left Half Style */}
-                    <div className="absolute top-full left-0 mt-2 w-[50vw] bg-white rounded-2xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
-                      {/* Invisible bridge to keep dropdown open */}
-                      <div className="absolute -top-2 left-0 right-0 h-2"></div>
+                    <div className="fixed top-[4rem] left-0 w-[50vw] bg-white rounded-r-2xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
                       {item.dropdown && Object.entries(item.dropdown).map(([sectionName, section]) => (
                         <div key={sectionName} className="p-6">
                           {/* Header Section */}
