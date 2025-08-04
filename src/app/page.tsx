@@ -51,29 +51,25 @@ const HomePage = () => {
       name: 'Yoga',
       description: 'Encuentra equilibrio entre cuerpo y mente',
       icon: '🧘‍♀️',
-      color: 'from-primary-200 to-primary-300',
+      color: 'from-purple-200 to-purple-300',
+      href: '/yoga',
       count: videosData.filter(v => v.category === 'yoga').length
     },
     {
-      name: 'Pilates',
-      description: 'Fortalece tu core y mejora tu postura',
+      name: 'Fitness',
+      description: 'Fortalece tu cuerpo con entrenamientos dinámicos',
       icon: '💪',
-      color: 'from-secondary-200 to-secondary-300',
-      count: videosData.filter(v => v.category === 'pilates').length
+      color: 'from-orange-200 to-orange-300',
+      href: '/fitness',
+      count: videosData.filter(v => v.category === 'fitness').length
     },
     {
-      name: 'Meditación',
-      description: 'Cultiva la paz interior y mindfulness',
-      icon: '🌸',
-      color: 'from-accent-200 to-accent-300',
-      count: videosData.filter(v => v.category === 'meditación').length
-    },
-    {
-      name: 'Bienestar',
-      description: 'Tips para una vida más saludable',
+      name: 'Wellness',
+      description: 'Cultiva tu bienestar integral y mindfulness',
       icon: '✨',
-      color: 'from-primary-100 to-secondary-100',
-      count: videosData.filter(v => v.category === 'bienestar').length
+      color: 'from-pink-200 to-pink-300',
+      href: '/wellness',
+      count: videosData.filter(v => v.category === 'wellness').length
     }
   ];
 
@@ -108,7 +104,7 @@ const HomePage = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/clases"
+                href="/yoga"
                 className="inline-flex items-center space-x-2 bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-8 py-4 rounded-2xl font-medium hover:from-primary-600 hover:to-secondary-600 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
               >
                 <Play className="w-5 h-5" />
@@ -117,11 +113,11 @@ const HomePage = () => {
               </Link>
               
               <Link
-                href="/mis-clases"
+                href="/mi-progreso"
                 className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm text-primary-700 px-8 py-4 rounded-2xl font-medium hover:bg-white transition-all duration-200 shadow-lg hover:shadow-xl border border-primary-200/50"
               >
                 <Heart className="w-5 h-5" />
-                <span>Mis Favoritos</span>
+                <span>Mi Progreso</span>
               </Link>
             </div>
           </div>
@@ -144,7 +140,7 @@ const HomePage = () => {
             {categories.map((category) => (
               <Link
                 key={category.name}
-                href={`/clases?category=${category.name.toLowerCase()}`}
+                href={category.href}
                 className="group"
               >
                                  <div className={`relative overflow-hidden bg-gradient-to-br ${category.color} rounded-3xl p-8 h-full transition-all duration-300 hover:scale-105 hover:shadow-xl`}>
