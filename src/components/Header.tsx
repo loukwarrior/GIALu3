@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Heart, Menu, X, User, Home, Play, BookOpen } from 'lucide-react';
+import { Heart, Menu, X, User, Home, Play, BookOpen, Users, Sparkles } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 
 const Header = () => {
@@ -18,8 +18,11 @@ const Header = () => {
 
   const navigation = [
     { name: 'Inicio', href: '/', icon: Home },
-    { name: 'Clases', href: '/clases', icon: Play },
-    { name: 'Mis Clases', href: '/mis-clases', icon: BookOpen },
+    { name: 'Yoga', href: '/yoga', icon: Sparkles },
+    { name: 'Fitness', href: '/fitness', icon: Play },
+    { name: 'Wellness', href: '/wellness', icon: Heart },
+    { name: 'Instructores', href: '/instructores', icon: Users },
+    { name: 'Mi Progreso', href: '/mi-progreso', icon: BookOpen },
   ];
 
   const isActive = (href: string) => {

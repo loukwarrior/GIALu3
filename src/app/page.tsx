@@ -8,21 +8,26 @@ import { ArrowRight, Play, Heart, Clock, Users, Sparkles } from 'lucide-react';
 import mantrasData from '@/data/mantras.json';
 import videosData from '@/data/videos.json';
 
-const HomePage = () => {
-  const [currentMantra, setCurrentMantra] = useState(mantrasData[0]);
-  const [featuredVideos, setFeaturedVideos] = useState(videosData.slice(0, 3));
-  const [isClient, setIsClient] = useState(false);
+// Default values outside component to avoid recreation on every render
+const defaultMantra = mantrasData[0];
+const defaultVideos = videosData.slice(0, 3);
 
+const HomePage = () => {
+  const [currentMantra, setCurrentMantra] = useState(defaultMantra);
+  const [featuredVideos, setFeaturedVideos] = useState(defaultVideos);
+  
   useEffect(() => {
-    setIsClient(true);
-    
-    // Seleccionar mantra basado en el día del año
+    // Seleccionar mantra basado en el día del año - solo después de hidratación
     const now = new Date();
     const start = new Date(now.getFullYear(), 0, 0);
     const diff = now.getTime() - start.getTime();
     const dayOfYear = Math.floor(diff / (1000 * 60 * 60 * 24));
     const mantraIndex = dayOfYear % mantrasData.length;
-    setCurrentMantra(mantrasData[mantraIndex]);
+    
+    // Solo actualizar si es diferente al default para evitar re-renders innecesarios
+    if (mantraIndex !== 0) {
+      setCurrentMantra(mantrasData[mantraIndex]);
+    }
     
     // Seleccionar videos destacados usando una semilla basada en la fecha
     const seed = now.getDate();
@@ -32,8 +37,14 @@ const HomePage = () => {
     };
     
     const shuffled = [...videosData].sort((a, b) => seededRandom(seed + a.id) - seededRandom(seed + b.id));
-    setFeaturedVideos(shuffled.slice(0, 3));
-  }, []);
+    const newFeaturedVideos = shuffled.slice(0, 3);
+    
+    // Solo actualizar si son diferentes a los default
+    const isDifferent = newFeaturedVideos.some((video, index) => video.id !== defaultVideos[index]?.id);
+    if (isDifferent) {
+      setFeaturedVideos(newFeaturedVideos);
+    }
+  }, []); // Array vacío - solo ejecutar una vez al mount
 
   const categories = [
     {
@@ -72,7 +83,6 @@ const HomePage = () => {
       
       {/* Hero Section with Daily Mantra */}
       <section className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-secondary-50">
-        <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-5"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
           <div className="text-center">
             <div className="inline-flex items-center space-x-2 bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full text-sm text-primary-700 border border-primary-200/50 mb-8">
@@ -87,26 +97,13 @@ const HomePage = () => {
               </span>
             </h1>
             
-            <div className="max-w-3xl mx-auto mb-12">
-              {isClient ? (
-                                  <>
-                    <blockquote className="text-xl md:text-2xl text-text-secondary font-body italic leading-relaxed">
-                      &ldquo;{currentMantra.text}&rdquo;
-                    </blockquote>
-                    <cite className="text-primary-600 font-medium mt-4 block">
-                      — {currentMantra.author}
-                    </cite>
-                  </>
-                ) : (
-                  <>
-                    <blockquote className="text-xl md:text-2xl text-text-secondary font-body italic leading-relaxed">
-                      &ldquo;Respira profundo y conecta con tu fuerza interior.&rdquo;
-                    </blockquote>
-                    <cite className="text-primary-600 font-medium mt-4 block">
-                      — GIA Wellness
-                    </cite>
-                  </>
-                )}
+                        <div className="max-w-3xl mx-auto mb-12">
+              <blockquote className="text-xl md:text-2xl text-text-secondary font-body italic leading-relaxed">
+                &ldquo;{currentMantra.text}&rdquo;
+              </blockquote>
+              <cite className="text-primary-600 font-medium mt-4 block">
+                — {currentMantra.author}
+              </cite>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -188,7 +185,7 @@ const HomePage = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {(isClient ? featuredVideos : videosData.slice(0, 3)).map((video) => (
+            {featuredVideos.map((video) => (
               <Link
                 key={video.id}
                 href={`/video/${video.id}`}

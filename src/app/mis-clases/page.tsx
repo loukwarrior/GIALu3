@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -10,11 +10,6 @@ import { useApp } from '@/context/AppContext';
 const MisClasesPage = () => {
   const { state, actions } = useApp();
   const [activeTab, setActiveTab] = useState<'favorites' | 'history'>('favorites');
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -57,15 +52,10 @@ const MisClasesPage = () => {
     };
   };
 
-  const stats = isClient ? getStats() : {
-    totalWatched: 0,
-    totalFavorites: 0,
-    totalMinutes: 0,
-    favoriteCategory: 'N/A'
-  };
+  const stats = getStats();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-accent-50 to-primary-50">
+    <div className="min-h-screen">
       <Header />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -143,7 +133,7 @@ const MisClasesPage = () => {
             >
               <div className="flex items-center justify-center space-x-2">
                 <Heart className="w-4 h-4" />
-                <span>Favoritos ({isClient ? state.favorites.length : 0})</span>
+                <span>Favoritos ({state.favorites.length})</span>
               </div>
             </button>
             
@@ -157,7 +147,7 @@ const MisClasesPage = () => {
             >
               <div className="flex items-center justify-center space-x-2">
                 <BookOpen className="w-4 h-4" />
-                <span>Historial ({isClient ? state.watchedVideos.length : 0})</span>
+                <span>Historial ({state.watchedVideos.length})</span>
               </div>
             </button>
           </div>

@@ -116,7 +116,7 @@ const Footer = () => {
         <div className="border-t border-white/20 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-primary-100 text-sm">
-              © {new Date().getFullYear()} GIA Wellness. Todos los derechos reservados.
+              © 2024 GIA Wellness. Todos los derechos reservados.
             </p>
             <div className="flex items-center space-x-1 mt-4 md:mt-0">
               <span className="text-primary-100 text-sm">Hecho con</span>

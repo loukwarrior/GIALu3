@@ -70,9 +70,9 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className={`${inter.className} antialiased bg-gradient-to-br from-white via-accent-50 to-primary-50 min-h-screen`}>
+      <body className={`${inter.className} antialiased`}>
         <AppProvider>
-          <div className="flex flex-col min-h-screen">
+          <div className="flex flex-col min-h-screen bg-gradient-to-br from-white via-accent-50 to-primary-50">
             {children}
           </div>
         </AppProvider>

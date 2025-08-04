@@ -6,11 +6,15 @@
     "instructor": "Ana García",
     "duration": "15 min",
     "level": "principiante",
+    "intensity": 2,
     "category": "yoga",
+    "subcategory": "hatha",
     "objective": "energía",
     "videoUrl": "https://www.youtube.com/embed/v7AYKMP6rOE",
     "thumbnail": "/api/placeholder/400/225",
-    "tags": ["saludo al sol", "mañana", "principiantes"]
+    "tags": ["saludo al sol", "mañana", "principiantes"],
+    "equipment": "ninguno",
+    "focus": ["flexibilidad", "fuerza básica"]
   },
   {
     "id": 2,
@@ -19,11 +23,15 @@
     "instructor": "Laura Martín",
     "duration": "10 min",
     "level": "principiante",
-    "category": "meditación",
+    "intensity": 1,
+    "category": "wellness",
+    "subcategory": "meditación",
     "objective": "relajación",
     "videoUrl": "https://www.youtube.com/embed/6p_yaNFSYao",
     "thumbnail": "/api/placeholder/400/225",
-    "tags": ["mindfulness", "respiración", "calma"]
+    "tags": ["mindfulness", "respiración", "calma"],
+    "equipment": "ninguno",
+    "focus": ["mindfulness", "relajación"]
   },
   {
     "id": 3,
@@ -32,11 +40,15 @@
     "instructor": "Carmen López",
     "duration": "20 min",
     "level": "intermedio",
-    "category": "pilates",
+    "intensity": 3,
+    "category": "fitness",
+    "subcategory": "pilates",
     "objective": "tonificación",
     "videoUrl": "https://www.youtube.com/embed/K56Z12WLQQI",
     "thumbnail": "/api/placeholder/400/225",
-    "tags": ["core", "abdomen", "fuerza"]
+    "tags": ["core", "abdomen", "fuerza"],
+    "equipment": "mat",
+    "focus": ["core", "estabilidad"]
   },
   {
     "id": 4,
@@ -45,11 +57,15 @@
     "instructor": "Isabel Ruiz",
     "duration": "30 min",
     "level": "principiante",
+    "intensity": 1,
     "category": "yoga",
+    "subcategory": "restaurativo",
     "objective": "relajación",
     "videoUrl": "https://www.youtube.com/embed/BiWnaZ2zkw0",
     "thumbnail": "/api/placeholder/400/225",
-    "tags": ["restaurativo", "relajación", "noche"]
+    "tags": ["restaurativo", "relajación", "noche"],
+    "equipment": "bolster, mantas",
+    "focus": ["relajación", "liberación de tensión"]
   },
   {
     "id": 5,
