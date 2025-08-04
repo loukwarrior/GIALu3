@@ -64,13 +64,13 @@ export default {
         }
       },
       fontFamily: {
-        'sans': ['Glacial Indifference', 'Inter', 'ui-sans-serif', 'system-ui'],
+        'sans': ['Glacial Indifference', 'var(--font-inter)', 'ui-sans-serif', 'system-ui'],
         'serif': ['ui-serif', 'Georgia'],
         'mono': ['ui-monospace', 'SFMono-Regular'],
-        'display': ['Glacial Indifference', 'Inter', 'ui-sans-serif'],
-        'body': ['Glacial Indifference', 'Open Sans', 'ui-sans-serif'],
-        'accent': ['Dancing Script', 'cursive'],
-        'logo': ['Josefin Sans', 'Inter', 'ui-sans-serif'],
+        'display': ['Glacial Indifference', 'var(--font-inter)', 'ui-sans-serif'],
+        'body': ['Glacial Indifference', 'var(--font-open-sans)', 'ui-sans-serif'],
+        'accent': ['var(--font-dancing-script)', 'cursive'],
+        'logo': ['var(--font-josefin-sans)', 'var(--font-inter)', 'ui-sans-serif'],
       },
       fontSize: {
         'xs': '.75rem',

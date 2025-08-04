@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Open_Sans, Dancing_Script } from "next/font/google";
+import { Inter, Open_Sans, Dancing_Script, Josefin_Sans } from "next/font/google";
 import { AppProvider } from "@/context/AppContext";
 import "./globals.css";
 
@@ -18,6 +18,12 @@ const openSans = Open_Sans({
 const dancingScript = Dancing_Script({ 
   subsets: ["latin"],
   variable: "--font-dancing-script",
+  display: 'swap',
+});
+
+const josefinSans = Josefin_Sans({ 
+  subsets: ["latin"],
+  variable: "--font-josefin-sans",
   display: 'swap',
 });
 
@@ -65,12 +71,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${inter.variable} ${openSans.variable} ${dancingScript.variable}`}>
+    <html lang="es" className={`${inter.variable} ${openSans.variable} ${dancingScript.variable} ${josefinSans.variable}`}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className={`${inter.className} antialiased`}>
+                  <body className="font-sans antialiased">
         <AppProvider>
           <div className="flex flex-col min-h-screen bg-gradient-to-br from-white via-accent-50 to-primary-50">
             {children}
