@@ -92,12 +92,12 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-primary-100/50 shadow-lg shadow-gray-200/50">
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+      <div className="max-w-7xl mx-auto pl-0 pr-2 sm:pr-4 lg:pr-6">
         <div className="flex justify-start items-center h-16 space-x-2">
           {/* Logo */}
           <Link 
             href="/" 
-            className="flex items-center group"
+            className="flex items-center group pl-4"
           >
             <h1 className="text-3xl font-logo font-black text-gray-900 hover:text-primary-600 transition-colors duration-200">
               GIA
