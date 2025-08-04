@@ -102,21 +102,21 @@ const ClassFinderContent = () => {
         {/* Hero Section */}
         <div className="bg-white py-12 text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 font-display">
-            CLASS FINDER
+            BUSCAR CLASES
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto px-4">
-            FIND THE PERFECT WORKOUT OR WELLNESS CLASS TO MATCH YOUR MOOD.
+            ENCUENTRA EL ENTRENAMIENTO PERFECTO O LA CLASE DE BIENESTAR PARA TU ESTADO DE ÁNIMO.
           </p>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 py-8">
           <div className="flex gap-8">
             {/* Sidebar Filters */}
-            <div className="w-80 bg-white rounded-lg shadow-sm p-6 h-fit sticky top-24">
+            <div className="w-80 bg-white shadow-sm p-6 h-fit sticky top-24">
               {/* Active Filters */}
               <div className="mb-6">
                 {selectedFilters.map(filter => (
-                  <div key={filter} className="inline-flex items-center bg-gray-100 rounded-full px-3 py-1 text-sm mr-2 mb-2">
+                  <div key={filter} className="inline-flex items-center bg-gray-100 px-3 py-1 text-sm mr-2 mb-2">
                     <span className="capitalize">{filter}</span>
                     <button
                       onClick={() => removeFilter(filter)}
@@ -131,20 +131,20 @@ const ClassFinderContent = () => {
               {/* Filter Header */}
               <div className="flex items-center justify-between mb-6">
                 <h3 className="font-semibold text-gray-900">
-                  Filters ({selectedFilters.length})
+                  Filtros ({selectedFilters.length})
                 </h3>
                 {selectedFilters.length > 0 && (
                   <button
                     onClick={clearAllFilters}
                     className="text-sm text-gray-500 hover:text-gray-700 underline"
                   >
-                    Clear All
+                    Limpiar Todo
                   </button>
                 )}
               </div>
 
               <div className="text-sm text-gray-600 mb-6">
-                {categorizedClasses.length} Classes
+                {categorizedClasses.length} Clases
               </div>
 
               {/* Filter Sections */}
@@ -211,7 +211,7 @@ const ClassFinderContent = () => {
                     onClick={() => toggleSection('mindfulness')}
                     className="flex items-center justify-between w-full py-2 text-left font-medium text-gray-900 hover:text-gray-700"
                   >
-                    MINDFULNESS
+                    ATENCIÓN PLENA
                     {expandedSections.mindfulness ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                   </button>
                   {expandedSections.mindfulness && (
@@ -235,7 +235,7 @@ const ClassFinderContent = () => {
                     onClick={() => toggleSection('wellness')}
                     className="flex items-center justify-between w-full py-2 text-left font-medium text-gray-900 hover:text-gray-700"
                   >
-                    WELLNESS
+                    BIENESTAR
                     {expandedSections.wellness ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                   </button>
                   {expandedSections.wellness && (
@@ -259,7 +259,7 @@ const ClassFinderContent = () => {
                     onClick={() => toggleSection('skills')}
                     className="flex items-center justify-between w-full py-2 text-left font-medium text-gray-900 hover:text-gray-700"
                   >
-                    SKILLS
+                    NIVEL
                     {expandedSections.skills ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                   </button>
                   {expandedSections.skills && (
@@ -287,7 +287,7 @@ const ClassFinderContent = () => {
                     onClick={() => toggleSection('duration')}
                     className="flex items-center justify-between w-full py-2 text-left font-medium text-gray-900 hover:text-gray-700"
                   >
-                    DURATION
+                    DURACIÓN
                     {expandedSections.duration ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                   </button>
                   {expandedSections.duration && (
@@ -313,12 +313,12 @@ const ClassFinderContent = () => {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="border border-gray-300 rounded-lg px-4 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500"
+                  className="border border-gray-300 px-4 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500"
                 >
-                  <option value="newest">Newest</option>
-                  <option value="oldest">Oldest</option>
-                  <option value="duration">Duration</option>
-                  <option value="alphabetical">Alphabetical</option>
+                  <option value="newest">Más Nuevos</option>
+                  <option value="oldest">Más Antiguos</option>
+                  <option value="duration">Duración</option>
+                  <option value="alphabetical">Alfabético</option>
                 </select>
               </div>
 
@@ -330,7 +330,7 @@ const ClassFinderContent = () => {
                     href={`/video/${video.id}`}
                     className="group block"
                   >
-                    <div className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-200">
+                    <div className="bg-white shadow-sm overflow-hidden hover:shadow-md transition-shadow duration-200">
                       <div className="relative">
                         <Image
                           src={video.thumbnail}
@@ -339,7 +339,7 @@ const ClassFinderContent = () => {
                           height={225}
                           className="w-full h-48 object-cover"
                         />
-                        <div className="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white text-xs px-2 py-1 rounded">
+                        <div className="absolute bottom-2 left-2 bg-black bg-opacity-75 text-white text-xs px-2 py-1">
                           {formatDuration(video.duration)}
                         </div>
                       </div>
