@@ -64,11 +64,11 @@ export default {
         }
       },
       fontFamily: {
-        'sans': ['Glacial Indifference', 'var(--font-inter)', 'ui-sans-serif', 'system-ui'],
+        'sans': ['GlacialIndifferenceRegular', 'var(--font-inter)', 'ui-sans-serif', 'system-ui'],
         'serif': ['ui-serif', 'Georgia'],
         'mono': ['ui-monospace', 'SFMono-Regular'],
-        'display': ['Glacial Indifference', 'var(--font-inter)', 'ui-sans-serif'],
-        'body': ['Glacial Indifference', 'var(--font-open-sans)', 'ui-sans-serif'],
+        'display': ['GlacialIndifferenceRegular', 'var(--font-inter)', 'ui-sans-serif'],
+        'body': ['GlacialIndifferenceRegular', 'var(--font-open-sans)', 'ui-sans-serif'],
         'accent': ['var(--font-dancing-script)', 'cursive'],
         'logo': ['var(--font-josefin-sans)', 'var(--font-inter)', 'ui-sans-serif'],
       },
