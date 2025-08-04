@@ -136,37 +136,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Categories Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {categories.map((category) => (
-              <Link
-                key={category.name}
-                href={category.href}
-                className="group"
-              >
-                                 <div className={`relative overflow-hidden bg-gradient-to-br ${category.color} rounded-3xl p-8 h-full transition-all duration-300 hover:scale-105 hover:shadow-xl`}>
-                  <div className="text-center">
-                    <h3 className="text-2xl font-bold text-text-primary mb-4 font-display">
-                      {category.name}
-                    </h3>
-                    <p className="text-text-secondary mb-6 text-sm leading-relaxed">
-                      {category.description}
-                    </p>
-                    <div className="flex items-center justify-center space-x-2 text-sm text-primary-700 font-medium">
-                      <Users className="w-4 h-4" />
-                      <span>{category.count} clases</span>
-                    </div>
-                  </div>
-                  
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* Featured Videos Section */}
       <section className="py-20 bg-gradient-to-br from-accent-50 to-primary-50">
