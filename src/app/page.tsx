@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { ArrowRight, Play, Heart, Clock, Users } from 'lucide-react';
+import { ArrowRight, Play, Heart, Clock } from 'lucide-react';
 import mantrasData from '@/data/mantras.json';
 import videosData from '@/data/videos.json';
 
@@ -45,30 +45,6 @@ const HomePage = () => {
       setFeaturedVideos(newFeaturedVideos);
     }
   }, []); // Array vacío - solo ejecutar una vez al mount
-
-  const categories = [
-    {
-      name: 'Yoga',
-      description: 'Encuentra equilibrio entre cuerpo y mente',
-      color: 'from-purple-200 to-purple-300',
-      href: '/yoga',
-      count: videosData.filter(v => v.category === 'yoga').length
-    },
-    {
-      name: 'Fitness',
-      description: 'Fortalece tu cuerpo con entrenamientos dinámicos',
-      color: 'from-orange-200 to-orange-300',
-      href: '/fitness',
-      count: videosData.filter(v => v.category === 'fitness').length
-    },
-    {
-      name: 'Wellness',
-      description: 'Cultiva tu bienestar integral y mindfulness',
-      color: 'from-pink-200 to-pink-300',
-      href: '/wellness',
-      count: videosData.filter(v => v.category === 'wellness').length
-    }
-  ];
 
   return (
     <div className="min-h-screen">
@@ -135,8 +111,6 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-
-
 
       {/* Featured Videos Section */}
       <section className="py-20 bg-gradient-to-br from-accent-50 to-primary-50">
