@@ -128,10 +128,10 @@ const Header = () => {
                 return (
                   <div key={item.name} className="relative group">
                     <button
-                      className={`flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
+                      className={`flex items-center px-4 py-3 text-sm font-medium transition-all duration-200 ${
                         isActive(item.href)
-                          ? 'bg-primary-100 text-primary-700 shadow-sm'
-                          : 'text-text-secondary hover:text-primary-600 hover:bg-primary-50'
+                          ? 'text-primary-700 border-b-2 border-primary-600'
+                          : 'text-text-secondary hover:text-primary-600'
                       }`}
                     >
                       <span>{item.name}</span>
@@ -179,10 +179,10 @@ const Header = () => {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
+                  className={`flex items-center px-4 py-3 text-sm font-medium transition-all duration-200 ${
                     isActive(item.href)
-                      ? 'bg-primary-100 text-primary-700 shadow-sm'
-                      : 'text-text-secondary hover:text-primary-600 hover:bg-primary-50'
+                      ? 'text-primary-700 border-b-2 border-primary-600'
+                      : 'text-text-secondary hover:text-primary-600'
                   }`}
                 >
                   <span>{item.name}</span>
@@ -236,10 +236,10 @@ const Header = () => {
                     <div key={item.name} className="space-y-2">
                       <button
                         onClick={() => setMobileDropdownOpen(isDropdownOpen ? null : item.name)}
-                        className={`flex items-center justify-between w-full px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
+                        className={`flex items-center justify-between w-full px-4 py-3 text-sm font-medium transition-all duration-200 ${
                           isActive(item.href)
-                            ? 'bg-primary-100 text-primary-700'
-                            : 'text-text-secondary hover:text-primary-600 hover:bg-primary-50'
+                            ? 'text-primary-700 border-b-2 border-primary-600'
+                            : 'text-text-secondary hover:text-primary-600'
                         }`}
                       >
                         <span>{item.name}</span>
@@ -289,10 +289,10 @@ const Header = () => {
                       setIsMenuOpen(false);
                       setMobileDropdownOpen(null);
                     }}
-                    className={`flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
+                    className={`flex items-center px-4 py-3 text-sm font-medium transition-all duration-200 ${
                       isActive(item.href)
-                        ? 'bg-primary-100 text-primary-700'
-                        : 'text-text-secondary hover:text-primary-600 hover:bg-primary-50'
+                        ? 'text-primary-700 border-b-2 border-primary-600'
+                        : 'text-text-secondary hover:text-primary-600'
                     }`}
                   >
                     <span>{item.name}</span>
@@ -307,7 +307,7 @@ const Header = () => {
                     setIsMenuOpen(false);
                     setMobileDropdownOpen(null);
                   }}
-                  className="flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium text-text-secondary hover:text-primary-600 hover:bg-primary-50 transition-all duration-200"
+                  className="flex items-center space-x-3 px-4 py-3 text-sm font-medium text-text-secondary hover:text-primary-600 transition-all duration-200"
                 >
                   <Heart className="w-5 h-5" />
                   <span>Mis Favoritos</span>
@@ -318,7 +318,7 @@ const Header = () => {
                   )}
                 </Link>
                 
-                <button className="flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium text-text-secondary hover:text-primary-600 hover:bg-primary-50 transition-all duration-200 w-full">
+                <button className="flex items-center space-x-3 px-4 py-3 text-sm font-medium text-text-secondary hover:text-primary-600 transition-all duration-200 w-full">
                   <User className="w-5 h-5" />
                   <span>Perfil</span>
                 </button>
