@@ -92,8 +92,8 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-primary-100/50 shadow-lg shadow-gray-200/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-start items-center h-16 space-x-4">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+        <div className="flex justify-start items-center h-16 space-x-2">
           {/* Logo */}
           <Link 
             href="/" 
@@ -105,7 +105,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-4">
+          <nav className="hidden md:flex items-center space-x-2">
             {navigation.map((item) => {
               const hasDropdown = item.dropdown;
               
@@ -113,7 +113,7 @@ const Header = () => {
                 return (
                   <div key={item.name} className="relative group">
                     <button
-                      className={`flex items-center px-4 py-3 text-sm font-medium transition-all duration-200 ${
+                      className={`flex items-center px-3 py-2 text-sm font-medium transition-all duration-200 ${
                         isActive(item.href)
                           ? 'text-primary-700'
                           : 'text-text-secondary hover:text-primary-600'
@@ -167,7 +167,7 @@ const Header = () => {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`flex items-center px-4 py-3 text-sm font-medium transition-all duration-200 ${
+                  className={`flex items-center px-3 py-2 text-sm font-medium transition-all duration-200 ${
                     isActive(item.href)
                       ? 'text-primary-700'
                       : 'text-text-secondary hover:text-primary-600'
@@ -181,7 +181,7 @@ const Header = () => {
               );
             })}
             {/* Desktop Actions */}
-            <div className="hidden md:flex items-center space-x-4 ml-auto">
+            <div className="hidden md:flex items-center space-x-2 ml-auto">
             <Link
               href="/mis-clases"
               className="relative p-2 text-text-secondary hover:text-primary-600 transition-colors duration-200"
