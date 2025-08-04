@@ -8,7 +8,7 @@ import Footer from '@/components/Footer';
 import VideoPlayer from '@/components/VideoPlayer';
 import { ArrowLeft, Heart, Clock, Target, Play, CheckCircle } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
-import videosData from '@/data/videos.json';
+import { videosData } from '@/lib/videos';
 
 const VideoPage = () => {
   const params = useParams();

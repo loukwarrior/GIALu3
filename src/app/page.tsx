@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 import VideoPlayer from '@/components/VideoPlayer';
 import { ArrowRight, Play, Heart, Clock } from 'lucide-react';
 import mantrasData from '@/data/mantras.json';
-import videosData from '@/data/videos.json';
+import { videosData } from '@/lib/videos';
 
 // Default values outside component to avoid recreation on every render
 const defaultMantra = mantrasData[0];
@@ -31,19 +31,25 @@ const HomePage = () => {
     }
     
     // Seleccionar videos destacados usando una semilla basada en la fecha
-    const seed = now.getDate();
-    const seededRandom = (seed: number) => {
-      const x = Math.sin(seed) * 10000;
-      return x - Math.floor(x);
-    };
-    
-    const shuffled = [...videosData].sort((a, b) => seededRandom(seed + a.id) - seededRandom(seed + b.id));
-    const newFeaturedVideos = shuffled.slice(0, 3);
-    
-    // Solo actualizar si son diferentes a los default
-    const isDifferent = newFeaturedVideos.some((video, index) => video.id !== defaultVideos[index]?.id);
-    if (isDifferent) {
-      setFeaturedVideos(newFeaturedVideos);
+    // Solo usar videos reales, no los de ejemplo
+    if (videosData.length > 0) {
+      const seed = now.getDate();
+      const seededRandom = (seed: number) => {
+        const x = Math.sin(seed) * 10000;
+        return x - Math.floor(x);
+      };
+      
+      const shuffled = [...videosData].sort((a, b) => seededRandom(seed + a.id) - seededRandom(seed + b.id));
+      const newFeaturedVideos = shuffled.slice(0, 3);
+      
+      // Solo actualizar si son diferentes a los default
+      const isDifferent = newFeaturedVideos.some((video, index) => video.id !== defaultVideos[index]?.id);
+      if (isDifferent) {
+        setFeaturedVideos(newFeaturedVideos);
+      }
+    } else {
+      // Si no hay videos reales, mostrar array vacío para activar el mensaje
+      setFeaturedVideos([]);
     }
   }, []); // Array vacío - solo ejecutar una vez al mount
 
@@ -202,7 +208,7 @@ const HomePage = () => {
       </section>
 
       {/* Community CTA Section */}
-      <section className="relative py-24 overflow-hidden bg-cover bg-center bg-no-repeat" style={{backgroundImage: 'url(https://g8vcni9w6iprkhuv.public.blob.vercel-storage.com/DSC08282c.JPG)'}}>
+      <section className="relative py-24 overflow-hidden bg-cover bg-center bg-no-repeat" style={{backgroundImage: 'url(https://g8vcni9w6iprkhuv.public.blob.vercel-storage.com/WhatsApp%20Image%202025-08-05%20at%2000.26.23.jpeg)'}}>
         {/* Dark overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-black/70"></div>
         

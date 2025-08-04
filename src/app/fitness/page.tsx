@@ -6,7 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Clock, Heart, Filter, Search, Users, Target, Zap } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
-import videosData from '@/data/videos.json';
+import { videosData } from '@/lib/videos';
 
 const FitnessPage = () => {
   const { state, actions } = useApp();

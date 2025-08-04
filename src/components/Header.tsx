@@ -35,9 +35,9 @@ const Header = () => {
   }, []);
 
   const navigation: NavigationItem[] = [
-    { name: 'Inicio', href: '/' },
+    { name: 'INICIO', href: '/' },
     { 
-      name: 'Yoga', 
+      name: 'YOGA', 
       href: '/yoga',
       dropdown: {
         'CLASSES': {

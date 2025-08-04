@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { X, ChevronDown, ChevronUp } from 'lucide-react';
-import videosData from '@/data/videos.json';
+import { videosData } from '@/lib/videos';
 
 const ClassFinderContent = () => {
   const searchParams = useSearchParams();
