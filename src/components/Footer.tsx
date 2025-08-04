@@ -52,27 +52,27 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Explora</h4>
             <ul className="space-y-3">
               <li>
-                <Link href="/clases" className="text-primary-100 hover:text-white transition-colors duration-200">
+                <Link href="/clases-finder" className="text-primary-100 hover:text-white transition-colors duration-200">
                   Todas las clases
                 </Link>
               </li>
               <li>
-                <Link href="/clases?category=yoga" className="text-primary-100 hover:text-white transition-colors duration-200">
+                <Link href="/clases-finder?category=yoga" className="text-primary-100 hover:text-white transition-colors duration-200">
                   Yoga
                 </Link>
               </li>
               <li>
-                <Link href="/clases?category=pilates" className="text-primary-100 hover:text-white transition-colors duration-200">
+                <Link href="/clases-finder?category=pilates" className="text-primary-100 hover:text-white transition-colors duration-200">
                   Pilates
                 </Link>
               </li>
               <li>
-                <Link href="/clases?category=meditación" className="text-primary-100 hover:text-white transition-colors duration-200">
+                <Link href="/clases-finder?category=meditación" className="text-primary-100 hover:text-white transition-colors duration-200">
                   Meditación
                 </Link>
               </li>
               <li>
-                <Link href="/clases?category=bienestar" className="text-primary-100 hover:text-white transition-colors duration-200">
+                <Link href="/clases-finder?category=bienestar" className="text-primary-100 hover:text-white transition-colors duration-200">
                   Bienestar
                 </Link>
               </li>

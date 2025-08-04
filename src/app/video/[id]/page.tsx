@@ -57,7 +57,7 @@ const VideoPage = () => {
             <h1 className="text-2xl font-semibold text-text-primary">Video no encontrado</h1>
             <p className="text-text-secondary mt-2">El video que buscas no existe.</p>
             <Link 
-              href="/clases"
+              href="/clases-finder"
               className="inline-flex items-center space-x-2 mt-6 bg-primary-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-primary-700 transition-colors duration-200"
             >
               <ArrowLeft className="w-4 h-4" />

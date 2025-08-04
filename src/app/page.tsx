@@ -95,7 +95,7 @@ const HomePage = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/clases"
+                href="/clases-finder"
                 className="inline-flex items-center space-x-2 bg-white text-primary-700 px-8 py-4 rounded-2xl font-medium hover:bg-primary-50 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 <Play className="w-5 h-5" />
@@ -127,57 +127,71 @@ const HomePage = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {featuredVideos.map((video) => (
-              <Link
-                key={video.id}
-                href={`/video/${video.id}`}
-                className="group"
-              >
-                <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-                  <div className="relative aspect-video bg-gradient-to-br from-primary-100 to-secondary-100">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <Play className="w-6 h-6 text-primary-600 ml-1" />
+          {featuredVideos.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {featuredVideos.map((video) => (
+                <Link
+                  key={video.id}
+                  href={`/video/${video.id}`}
+                  className="group"
+                >
+                  <div className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+                    <div className="relative aspect-video bg-gradient-to-br from-primary-100 to-secondary-100">
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                          <Play className="w-6 h-6 text-primary-600 ml-1" />
+                        </div>
+                      </div>
+                      <div className="absolute top-4 left-4">
+                        <span className="inline-flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-medium text-primary-700">
+                          <Clock className="w-3 h-3" />
+                          <span>{video.duration}</span>
+                        </span>
+                      </div>
+                      <div className="absolute top-4 right-4">
+                        <span className="inline-block bg-secondary-500 text-white px-2 py-1 rounded-full text-xs font-medium">
+                          {video.category}
+                        </span>
                       </div>
                     </div>
-                    <div className="absolute top-4 left-4">
-                      <span className="inline-flex items-center space-x-1 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full text-xs font-medium text-primary-700">
-                        <Clock className="w-3 h-3" />
-                        <span>{video.duration}</span>
-                      </span>
-                    </div>
-                    <div className="absolute top-4 right-4">
-                      <span className="inline-block bg-secondary-500 text-white px-2 py-1 rounded-full text-xs font-medium">
-                        {video.category}
-                      </span>
-                    </div>
-                  </div>
-                  
-                  <div className="p-6">
-                    <h3 className="text-lg font-semibold text-text-primary mb-2 group-hover:text-primary-600 transition-colors duration-200">
-                      {video.title}
-                    </h3>
-                    <p className="text-text-secondary text-sm mb-3 line-clamp-2">
-                      {video.description}
-                    </p>
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-primary-600 font-medium">
-                        {video.instructor}
-                      </span>
-                      <span className="text-text-muted">
-                        {video.level}
-                      </span>
+                    
+                    <div className="p-6">
+                      <h3 className="text-lg font-semibold text-text-primary mb-2 group-hover:text-primary-600 transition-colors duration-200">
+                        {video.title}
+                      </h3>
+                      <p className="text-text-secondary text-sm mb-3 line-clamp-2">
+                        {video.description}
+                      </p>
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="text-primary-600 font-medium">
+                          {video.instructor}
+                        </span>
+                        <span className="text-text-muted">
+                          {video.level}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Link>
-            ))}
-          </div>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-16">
+              <div className="w-24 h-24 bg-gradient-to-br from-primary-100 to-secondary-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Play className="w-8 h-8 text-primary-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-text-primary mb-2">
+                No hay clases disponibles todavía
+              </h3>
+              <p className="text-text-secondary max-w-md mx-auto">
+                Estamos preparando contenido increíble para ti. ¡Vuelve pronto para descubrir nuestras clases de yoga, pilates y bienestar!
+              </p>
+            </div>
+          )}
           
           <div className="text-center mt-12">
             <Link
-              href="/clases"
+              href="/clases-finder"
               className="inline-flex items-center space-x-2 bg-primary-600 text-white px-8 py-4 rounded-2xl font-medium hover:bg-primary-700 transition-colors duration-200"
             >
               <span>Ver todas las clases</span>
@@ -214,7 +228,7 @@ const HomePage = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/clases"
+              href="/clases-finder"
               className="inline-flex items-center justify-center space-x-3 bg-white text-primary-700 px-10 py-5 font-semibold hover:bg-primary-50 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl group"
             >
               <span className="text-lg">Comenzar ahora</span>

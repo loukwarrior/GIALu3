@@ -168,7 +168,7 @@ const MisClasesPage = () => {
                       Explora nuestro catálogo y marca tus clases favoritas para acceder fácilmente a ellas.
                     </p>
                     <Link
-                      href="/clases"
+                      href="/clases-finder"
                       className="inline-flex items-center space-x-2 bg-primary-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-primary-700 transition-colors duration-200"
                     >
                       <span>Explorar clases</span>
@@ -260,7 +260,7 @@ const MisClasesPage = () => {
                       Comienza tu práctica viendo algunas de nuestras clases de bienestar.
                     </p>
                     <Link
-                      href="/clases"
+                      href="/clases-finder"
                       className="inline-flex items-center space-x-2 bg-primary-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-primary-700 transition-colors duration-200"
                     >
                       <span>Explorar clases</span>
