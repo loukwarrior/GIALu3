@@ -185,22 +185,34 @@ const HomePage = () => {
       </section>
 
       {/* Community CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-primary-600 to-secondary-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-6">
+      <section className="relative py-24 bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-600 overflow-hidden">
+        {/* Background Decorative Elements */}
+        <div className="absolute inset-0">
+          {/* Large Circle */}
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+          {/* Medium Circle */}
+          <div className="absolute -bottom-16 -left-16 w-64 h-64 bg-secondary-300/20 rounded-full blur-2xl"></div>
+          {/* Small Floating Elements */}
+          <div className="absolute top-1/4 left-1/4 w-8 h-8 bg-white/20 rounded-full animate-pulse"></div>
+          <div className="absolute bottom-1/3 right-1/3 w-6 h-6 bg-primary-200/30 rounded-full animate-pulse delay-1000"></div>
+          <div className="absolute top-2/3 right-1/4 w-4 h-4 bg-white/15 rounded-full animate-pulse delay-500"></div>
+        </div>
+        
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">
             Únete a la comunidad GIA
           </h2>
-          <p className="text-xl text-primary-100 mb-8 leading-relaxed">
+          <p className="text-xl md:text-2xl text-white/90 mb-10 leading-relaxed max-w-3xl mx-auto">
             Más que una app de ejercicios, somos una comunidad de mujeres que se apoyan 
             en su camino hacia el bienestar integral.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/clases"
-              className="inline-flex items-center space-x-2 bg-white text-primary-700 px-8 py-4 rounded-2xl font-medium hover:bg-primary-50 transition-colors duration-200"
+              className="inline-flex items-center justify-center space-x-3 bg-white text-primary-700 px-10 py-5 font-semibold hover:bg-primary-50 transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl group"
             >
-              <span>Comenzar ahora</span>
-              <ArrowRight className="w-5 h-5" />
+              <span className="text-lg">Comenzar ahora</span>
+              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300" />
             </Link>
           </div>
         </div>
