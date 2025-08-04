@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Heart, Menu, X, User, Home, Play, BookOpen, Users, Sparkles } from 'lucide-react';
+import { Heart, Menu, X, User, Home, Play, BookOpen, Users, Sparkles, Search } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 
 type DropdownItem = {
@@ -91,6 +91,7 @@ const Header = () => {
         }
       }
     },
+    { name: 'Todas las Clases', href: '/clases-finder', icon: Search },
     { name: 'Instructores', href: '/instructores', icon: Users },
     { name: 'Mi Progreso', href: '/mi-progreso', icon: BookOpen },
   ];
