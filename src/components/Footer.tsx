@@ -62,18 +62,13 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/clases-finder?category=pilates" className="text-primary-100 hover:text-white transition-colors duration-200">
-                  Pilates
+                <Link href="/clases-finder?category=fitness" className="text-primary-100 hover:text-white transition-colors duration-200">
+                  Fitness
                 </Link>
               </li>
               <li>
-                <Link href="/clases-finder?category=meditación" className="text-primary-100 hover:text-white transition-colors duration-200">
-                  Meditación
-                </Link>
-              </li>
-              <li>
-                <Link href="/clases-finder?category=bienestar" className="text-primary-100 hover:text-white transition-colors duration-200">
-                  Bienestar
+                <Link href="/clases-finder?category=wellness" className="text-primary-100 hover:text-white transition-colors duration-200">
+                  Wellness
                 </Link>
               </li>
             </ul>

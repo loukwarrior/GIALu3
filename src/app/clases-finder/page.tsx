@@ -8,6 +8,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { X, ChevronDown, ChevronUp } from 'lucide-react';
 import { videosData } from '@/lib/videos';
+import instructorsData from '@/data/instructors.json';
 
 const ClassFinderContent = () => {
   const searchParams = useSearchParams();
@@ -18,7 +19,8 @@ const ClassFinderContent = () => {
     mindfulness: false,
     wellness: false,
     skills: false,
-    duration: false
+    duration: false,
+    instructors: false
   });
   const [sortBy, setSortBy] = useState('most-relevant');
 
@@ -64,13 +66,32 @@ const ClassFinderContent = () => {
 
   // Categorizar y ordenar clases
   const categorizedClasses = useMemo(() => {
-    let filtered = videosData.filter(video => {
+    const filtered = videosData.filter(video => {
       if (selectedFilters.length === 0) return true;
       return selectedFilters.every(filter => {
         const mappedFilter = filterMapping[filter.toLowerCase()] || filter.toLowerCase();
+        
+        // Filtrar por duración
+        if (['5-15 min', '15-30 min', '30-45 min', '45+ min'].includes(filter)) {
+          const videoDuration = parseInt(video.duration) || 0;
+          switch (filter) {
+            case '5-15 min':
+              return videoDuration >= 5 && videoDuration <= 15;
+            case '15-30 min':
+              return videoDuration > 15 && videoDuration <= 30;
+            case '30-45 min':
+              return videoDuration > 30 && videoDuration <= 45;
+            case '45+ min':
+              return videoDuration > 45;
+            default:
+              return false;
+          }
+        }
+        
         return video.category?.toLowerCase() === mappedFilter ||
                video.subcategory?.toLowerCase() === mappedFilter ||
-               video.level?.toLowerCase() === mappedFilter;
+               video.level?.toLowerCase() === mappedFilter ||
+               video.instructor?.toLowerCase() === mappedFilter;
       });
     });
 
@@ -328,9 +349,42 @@ const ClassFinderContent = () => {
                       {['5-15 min', '15-30 min', '30-45 min', '45+ min'].map(item => (
                         <button
                           key={item}
-                          className="block text-sm text-gray-600 hover:text-gray-900 py-1"
+                          onClick={() => addFilter(item.toLowerCase())}
+                          className={`block text-sm py-1 w-full text-left ${
+                            selectedFilters.includes(item.toLowerCase())
+                              ? 'text-primary-600 font-medium'
+                              : 'text-gray-600 hover:text-gray-900'
+                          }`}
                         >
                           {item}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* INSTRUCTORS */}
+                <div>
+                  <button
+                    onClick={() => toggleSection('instructors')}
+                    className="flex items-center justify-between w-full py-2 text-left font-medium text-gray-900 hover:text-gray-700"
+                  >
+                    INSTRUCTORES
+                    {expandedSections.instructors ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  </button>
+                  {expandedSections.instructors && (
+                    <div className="pl-4 space-y-2 mt-2">
+                      {instructorsData.map(instructor => (
+                        <button
+                          key={instructor.id}
+                          onClick={() => addFilter(instructor.name.toLowerCase())}
+                          className={`block text-sm py-1 w-full text-left ${
+                            selectedFilters.includes(instructor.name.toLowerCase())
+                              ? 'text-primary-600 font-medium'
+                              : 'text-gray-600 hover:text-gray-900'
+                          }`}
+                        >
+                          {instructor.name}
                         </button>
                       ))}
                     </div>

@@ -45,10 +45,7 @@ const Header = () => {
             { name: 'Todas las Clases de Yoga', href: '/clases-finder?category=yoga' },
             { name: 'Hatha', href: '/clases-finder?category=yoga&subcategory=hatha' },
             { name: 'Vinyasa', href: '/clases-finder?category=yoga&subcategory=vinyasa' },
-            { name: 'Restaurativo', href: '/clases-finder?category=yoga&subcategory=restaurativo' },
-            { name: 'Principiante', href: '/clases-finder?category=yoga&level=principiante' },
-            { name: 'Intermedio', href: '/clases-finder?category=yoga&level=intermedio' },
-            { name: 'Avanzado', href: '/clases-finder?category=yoga&level=avanzado' }
+            { name: 'Restaurativo', href: '/clases-finder?category=yoga&subcategory=restaurativo' }
           ]
         }
       }
@@ -63,10 +60,7 @@ const Header = () => {
             { name: 'Todas las Clases de Fitness', href: '/clases-finder?category=fitness' },
             { name: 'Pilates', href: '/clases-finder?category=fitness&subcategory=pilates' },
             { name: 'HIIT', href: '/clases-finder?category=fitness&subcategory=hiit' },
-            { name: 'Cardio', href: '/clases-finder?category=fitness&subcategory=cardio' },
-            { name: 'Principiante', href: '/clases-finder?category=fitness&level=principiante' },
-            { name: 'Intermedio', href: '/clases-finder?category=fitness&level=intermedio' },
-            { name: 'Avanzado', href: '/clases-finder?category=fitness&level=avanzado' }
+            { name: 'Cardio', href: '/clases-finder?category=fitness&subcategory=cardio' }
           ]
         }
       }
@@ -80,10 +74,8 @@ const Header = () => {
           items: [
             { name: 'Todas las Clases de Wellness', href: '/clases-finder?category=wellness' },
             { name: 'Meditación', href: '/clases-finder?category=wellness&subcategory=meditación' },
-                            { name: 'Técnicas de Respiración', href: '/clases-finder?category=wellness&subcategory=breathwork' },
-                { name: 'Atención Plena', href: '/clases-finder?category=wellness&subcategory=mindfulness' },
-            { name: 'Principiante', href: '/clases-finder?category=wellness&level=principiante' },
-            { name: 'Intermedio', href: '/clases-finder?category=wellness&level=intermedio' }
+            { name: 'Técnicas de Respiración', href: '/clases-finder?category=wellness&subcategory=breathwork' },
+            { name: 'Atención Plena', href: '/clases-finder?category=wellness&subcategory=mindfulness' }
           ]
         }
       }
