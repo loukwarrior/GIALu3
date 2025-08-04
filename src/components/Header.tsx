@@ -80,8 +80,8 @@ const Header = () => {
           items: [
             { name: 'Todas las Clases de Wellness', href: '/clases-finder?category=wellness' },
             { name: 'Meditación', href: '/clases-finder?category=wellness&subcategory=meditación' },
-            { name: 'Breathwork', href: '/clases-finder?category=wellness&subcategory=breathwork' },
-            { name: 'Mindfulness', href: '/clases-finder?category=wellness&subcategory=mindfulness' },
+                            { name: 'Técnicas de Respiración', href: '/clases-finder?category=wellness&subcategory=breathwork' },
+                { name: 'Atención Plena', href: '/clases-finder?category=wellness&subcategory=mindfulness' },
             { name: 'Principiante', href: '/clases-finder?category=wellness&level=principiante' },
             { name: 'Intermedio', href: '/clases-finder?category=wellness&level=intermedio' }
           ]

@@ -21,7 +21,7 @@ const WellnessPage = () => {
 
   const levels = ['principiante', 'intermedio', 'avanzado'];
   const intensityLevels = [1, 2, 3, 4];
-  const subcategories = ['meditación', 'breathwork', 'mindfulness', 'autocuidado', 'nutrición'];
+  const subcategories = ['meditación', 'técnicas de respiración', 'atención plena', 'autocuidado', 'nutrición'];
   const durations = ['5-15 min', '15-30 min', '30-45 min', '45+ min'];
 
   useEffect(() => {
@@ -96,7 +96,7 @@ const WellnessPage = () => {
             Wellness
           </h1>
           <p className="text-xl text-text-secondary max-w-3xl mx-auto">
-            Nutre tu bienestar integral con prácticas de mindfulness, meditación y autocuidado. 
+            Nutre tu bienestar integral con prácticas de atención plena, meditación y autocuidado. 
             Descubre herramientas para cultivar la paz interior y el equilibrio emocional.
           </p>
         </div>

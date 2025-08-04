@@ -20,7 +20,7 @@ const ClassFinderContent = () => {
     skills: false,
     duration: false
   });
-  const [sortBy, setSortBy] = useState('newest');
+  const [sortBy, setSortBy] = useState('most-relevant');
 
   // Leer parámetros de URL y aplicar filtros automáticamente
   useEffect(() => {
@@ -56,15 +56,22 @@ const ClassFinderContent = () => {
     }
   }, [searchParams]);
 
+  // Mapeo de términos en español a valores en datos
+  const filterMapping: Record<string, string> = {
+    'técnicas de respiración': 'breathwork',
+    'atención plena': 'mindfulness',
+  };
+
   // Categorizar y ordenar clases
   const categorizedClasses = useMemo(() => {
     let filtered = videosData.filter(video => {
       if (selectedFilters.length === 0) return true;
-      return selectedFilters.every(filter => 
-        video.category?.toLowerCase() === filter.toLowerCase() ||
-        video.subcategory?.toLowerCase() === filter.toLowerCase() ||
-        video.level?.toLowerCase() === filter.toLowerCase()
-      );
+      return selectedFilters.every(filter => {
+        const mappedFilter = filterMapping[filter.toLowerCase()] || filter.toLowerCase();
+        return video.category?.toLowerCase() === mappedFilter ||
+               video.subcategory?.toLowerCase() === mappedFilter ||
+               video.level?.toLowerCase() === mappedFilter;
+      });
     });
 
     // Aplicar ordenamiento
@@ -242,7 +249,7 @@ const ClassFinderContent = () => {
                   </button>
                   {expandedSections.mindfulness && (
                     <div className="pl-4 space-y-2 mt-2">
-                      {['Meditación', 'Breathwork', 'Mindfulness'].map(item => (
+                      {['Meditación', 'Técnicas de Respiración', 'Atención Plena'].map(item => (
                         <button
                           key={item}
                           onClick={() => addFilter(item.toLowerCase())}
@@ -341,10 +348,10 @@ const ClassFinderContent = () => {
                   onChange={(e) => setSortBy(e.target.value)}
                   className="border border-gray-300 px-4 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500"
                 >
-                  <option value="newest">Más Nuevos</option>
                   <option value="most-relevant">Más Relevante</option>
                   <option value="most-popular">Más Popular</option>
                   <option value="alphabetical">A → Z</option>
+                  <option value="newest">Más Nuevos</option>
                   <option value="duration-short">Duración Corta-Larga</option>
                   <option value="duration-long">Duración Larga-Corta</option>
                 </select>
