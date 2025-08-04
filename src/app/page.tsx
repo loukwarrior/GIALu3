@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import VideoPlayer from '@/components/VideoPlayer';
+// import VideoPlayer from '@/components/VideoPlayer'; // Comentado temporalmente
 import { ArrowRight, Play, Heart, Clock } from 'lucide-react';
 import mantrasData from '@/data/mantras.json';
 import { videosData } from '@/lib/videos';

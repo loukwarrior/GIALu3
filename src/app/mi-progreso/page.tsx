@@ -65,7 +65,7 @@ const MiProgresoPage = () => {
       .sort((a, b) => new Date(b).getTime() - new Date(a).getTime());
     
     let streak = 0;
-    const today = new Date().toDateString();
+    // const today = new Date().toDateString(); // Comentado temporalmente hasta implementar funcionalidad
     
     for (let i = 0; i < dates.length; i++) {
       const currentDate = new Date(dates[i]);

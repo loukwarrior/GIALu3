@@ -58,14 +58,14 @@ const ClassFinderContent = () => {
     }
   }, [searchParams]);
 
-  // Mapeo de términos en español a valores en datos
-  const filterMapping: Record<string, string> = {
-    'técnicas de respiración': 'breathwork',
-    'atención plena': 'mindfulness',
-  };
-
   // Categorizar y ordenar clases
   const categorizedClasses = useMemo(() => {
+    // Mapeo de términos en español a valores en datos
+    const filterMapping: Record<string, string> = {
+      'técnicas de respiración': 'breathwork',
+      'atención plena': 'mindfulness',
+    };
+
     const filtered = videosData.filter(video => {
       if (selectedFilters.length === 0) return true;
       return selectedFilters.every(filter => {
