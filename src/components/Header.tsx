@@ -88,7 +88,6 @@ const Header = () => {
         }
       }
     },
-    { name: 'Instructores', href: '/instructores' },
     { name: 'Mi Progreso', href: '/mi-progreso' },
   ];
 
@@ -138,28 +137,49 @@ const Header = () => {
                       <span>{item.name}</span>
                     </Link>
                     
-                    {/* Dropdown Menu - Alo Moves Style Single Column */}
-                    <div className="absolute top-full left-0 mt-1 w-[300px] bg-white rounded-none shadow-xl border-0 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 z-50">
+                    {/* Dropdown Menu - Alomove Style Horizontal Mega Menu */}
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-1 w-[50vw] bg-white rounded-2xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
                       {item.dropdown && Object.entries(item.dropdown).map(([sectionName, section]) => (
-                        <div key={sectionName} className="p-6">
-                          <div className="mb-4">
-                            <h3 className="font-bold text-lg text-gray-900 mb-2">
+                        <div key={sectionName} className="p-8">
+                          {/* Header Section */}
+                          <div className="mb-8 text-center">
+                            <h3 className="font-bold text-2xl text-gray-900 mb-3">
                               {sectionName}
                             </h3>
-                            <p className="text-sm text-gray-600 leading-relaxed">
+                            <p className="text-gray-600 max-w-2xl mx-auto leading-relaxed">
                               {section.subtitle}
                             </p>
                           </div>
-                          <div className="space-y-1">
-                            {section.items.map((dropdownItem: DropdownItem) => (
+                          
+                          {/* Items Grid - 3 columns */}
+                          <div className="grid grid-cols-3 gap-6">
+                            {section.items.map((dropdownItem: DropdownItem, index) => (
                               <Link
                                 key={dropdownItem.name}
                                 href={dropdownItem.href}
-                                className="block py-2 text-gray-700 hover:text-gray-900 text-sm font-medium transition-colors duration-150"
+                                className="group/item p-4 rounded-xl hover:bg-gradient-to-br hover:from-primary-50 hover:to-secondary-50 transition-all duration-200 hover:shadow-md"
                               >
-                                {dropdownItem.name}
+                                <div className="flex items-center space-x-3">
+                                  <div className="w-2 h-2 bg-gradient-to-br from-primary-400 to-secondary-400 rounded-full group-hover/item:scale-125 transition-transform duration-200"></div>
+                                  <span className="text-gray-700 group-hover/item:text-primary-700 font-medium transition-colors duration-200">
+                                    {dropdownItem.name}
+                                  </span>
+                                </div>
                               </Link>
                             ))}
+                          </div>
+                          
+                          {/* Footer CTA */}
+                          <div className="mt-8 pt-6 border-t border-gray-100 text-center">
+                            <Link
+                              href="/clases"
+                              className="inline-flex items-center space-x-2 bg-gradient-to-r from-primary-600 to-secondary-600 text-white px-6 py-3 rounded-full font-medium hover:from-primary-700 hover:to-secondary-700 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                            >
+                              <span>Ver todas las clases</span>
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            </Link>
                           </div>
                         </div>
                       ))}
