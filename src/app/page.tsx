@@ -74,46 +74,62 @@ const HomePage = () => {
     <div className="min-h-screen">
       <Header />
       
-      {/* Hero Section with Daily Mantra */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-secondary-50">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-          <div className="text-center">
-            <div className="inline-flex items-center bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full text-sm text-primary-700 border border-primary-200/50 mb-8">
+      {/* Video Hero Section */}
+      <section className="relative h-screen overflow-hidden">
+        {/* Video Background */}
+        <div className="absolute inset-0">
+          <iframe
+            src="https://www.youtube.com/embed/v7AYKMP6rOE?autoplay=1&mute=1&loop=1&playlist=v7AYKMP6rOE&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
+            className="absolute inset-0 w-full h-full object-cover scale-150"
+            allow="autoplay; encrypted-media"
+            style={{ 
+              pointerEvents: 'none',
+              transform: 'scale(1.1)',
+            }}
+          />
+          {/* Dark overlay for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-primary-900/40"></div>
+        </div>
+        
+        {/* Content overlay */}
+        <div className="relative h-full flex items-center justify-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="inline-flex items-center bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm text-white border border-white/30 mb-8">
               <span>Mantra de hoy</span>
             </div>
             
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-accent font-bold text-text-primary mb-6 leading-tight">
-              Bienvenida a{' '}
-              <span className="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
-                GIA
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-accent font-bold text-white mb-6 leading-tight drop-shadow-lg">
+              Conecta con tu{' '}
+              <span className="bg-gradient-to-r from-primary-300 to-secondary-300 bg-clip-text text-transparent">
+                bienestar
               </span>
             </h1>
             
-                        <div className="max-w-3xl mx-auto mb-12">
-              <blockquote className="text-xl md:text-2xl text-text-secondary font-body italic leading-relaxed">
+            <div className="max-w-3xl mx-auto mb-12">
+              <blockquote className="text-xl md:text-2xl text-white/90 font-body italic leading-relaxed drop-shadow-md">
                 &ldquo;{currentMantra.text}&rdquo;
               </blockquote>
-              <cite className="text-primary-600 font-medium mt-4 block">
+              <cite className="text-primary-200 font-medium mt-4 block">
                 — {currentMantra.author}
               </cite>
             </div>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/yoga"
-                className="inline-flex items-center space-x-2 bg-gradient-to-r from-primary-500 to-secondary-500 text-white px-8 py-4 rounded-2xl font-medium hover:from-primary-600 hover:to-secondary-600 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                href="/clases"
+                className="inline-flex items-center space-x-2 bg-white text-primary-700 px-8 py-4 rounded-2xl font-medium hover:bg-primary-50 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 <Play className="w-5 h-5" />
-                <span>Explorar Clases</span>
+                <span>Comenzar mi práctica</span>
                 <ArrowRight className="w-5 h-5" />
               </Link>
               
               <Link
-                href="/mi-progreso"
-                className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm text-primary-700 px-8 py-4 rounded-2xl font-medium hover:bg-white transition-all duration-200 shadow-lg hover:shadow-xl border border-primary-200/50"
+                href="/mis-clases"
+                className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-2xl font-medium hover:bg-white/20 transition-all duration-200 border border-white/30"
               >
                 <Heart className="w-5 h-5" />
-                <span>Mi Progreso</span>
+                <span>Mis favoritos</span>
               </Link>
             </div>
           </div>
@@ -123,15 +139,6 @@ const HomePage = () => {
       {/* Categories Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-text-primary mb-4">
-              Descubre tu práctica ideal
-            </h2>
-            <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-              Explora nuestras categorías de bienestar diseñadas para nutrir tu cuerpo, mente y espíritu.
-            </p>
-          </div>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {categories.map((category) => (
               <Link
