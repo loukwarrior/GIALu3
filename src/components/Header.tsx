@@ -55,7 +55,7 @@ const Header = () => {
       }
     },
     { 
-      name: 'Fitness', 
+      name: 'FITNESS', 
       href: '/fitness',
       dropdown: {
         'CLASSES': {
@@ -73,7 +73,7 @@ const Header = () => {
       }
     },
     { 
-      name: 'Wellness', 
+      name: 'WELLNESS', 
       href: '/wellness',
       dropdown: {
         'CLASSES': {
@@ -89,7 +89,7 @@ const Header = () => {
         }
       }
     },
-    { name: 'Mi Progreso', href: '/mi-progreso' },
+    { name: 'MI PROGRESO', href: '/mi-progreso' },
   ];
 
   const isActive = (href: string) => {
@@ -102,7 +102,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-primary-100/50 shadow-lg shadow-gray-200/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-start items-center h-16 space-x-8">
           {/* Logo */}
           <Link 
             href="/" 
@@ -112,7 +112,7 @@ const Header = () => {
               <span className="text-primary-700 font-logo text-xl font-bold">G</span>
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-2xl font-logo font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
+              <h1 className="text-2xl font-logo font-black bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
                 GIA
               </h1>
               <p className="text-xs text-text-secondary -mt-1 font-sans">Wellness</p>
@@ -120,7 +120,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
+          <nav className="hidden md:flex items-center space-x-6">
             {navigation.map((item) => {
               const hasDropdown = item.dropdown;
               
@@ -195,10 +195,8 @@ const Header = () => {
                 </Link>
               );
             })}
-          </nav>
-
-          {/* Desktop Actions */}
-          <div className="hidden md:flex items-center space-x-4">
+            {/* Desktop Actions */}
+            <div className="hidden md:flex items-center space-x-6 ml-auto">
             <Link
               href="/mis-clases"
               className="relative p-2 text-text-secondary hover:text-primary-600 transition-colors duration-200"
@@ -215,7 +213,8 @@ const Header = () => {
               <User className="w-4 h-4" />
               <span>Perfil</span>
             </button>
-          </div>
+            </div>
+          </nav>
 
           {/* Mobile menu button */}
           <button
@@ -223,7 +222,7 @@ const Header = () => {
               setIsMenuOpen(!isMenuOpen);
               setMobileDropdownOpen(null);
             }}
-            className="md:hidden p-2 text-text-secondary hover:text-primary-600 transition-colors duration-200"
+            className="md:hidden p-2 text-text-secondary hover:text-primary-600 transition-colors duration-200 ml-auto"
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
