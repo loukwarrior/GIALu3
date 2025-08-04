@@ -102,7 +102,7 @@ const ClassFinderContent = () => {
       case 'most-relevant':
         return filtered.sort((a, b) => a.title.localeCompare(b.title)); // Por título como relevancia
       case 'most-popular':
-        return filtered.sort((a, b) => (b.views || 0) - (a.views || 0)); // Por popularidad (si existe campo views)
+        return filtered.sort((a, b) => a.title.localeCompare(b.title)); // Por ahora ordenamos alfabéticamente hasta tener datos de popularidad
       case 'alphabetical':
         return filtered.sort((a, b) => a.title.localeCompare(b.title));
       case 'duration-short':
