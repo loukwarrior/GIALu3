@@ -130,11 +130,14 @@ const Header = () => {
                     <button
                       className={`flex items-center px-4 py-3 text-sm font-medium transition-all duration-200 ${
                         isActive(item.href)
-                          ? 'text-primary-700 border-b-2 border-primary-600'
+                          ? 'text-primary-700'
                           : 'text-text-secondary hover:text-primary-600'
-                      }`}
+                      } relative group/nav`}
                     >
-                      <span>{item.name}</span>
+                      <span className="relative">
+                        {item.name}
+                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover/nav:w-full"></span>
+                      </span>
                       <svg className="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
@@ -181,11 +184,14 @@ const Header = () => {
                   href={item.href}
                   className={`flex items-center px-4 py-3 text-sm font-medium transition-all duration-200 ${
                     isActive(item.href)
-                      ? 'text-primary-700 border-b-2 border-primary-600'
+                      ? 'text-primary-700'
                       : 'text-text-secondary hover:text-primary-600'
-                  }`}
+                  } relative group/nav`}
                 >
-                  <span>{item.name}</span>
+                  <span className="relative">
+                    {item.name}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover/nav:w-full"></span>
+                  </span>
                 </Link>
               );
             })}
@@ -238,11 +244,14 @@ const Header = () => {
                         onClick={() => setMobileDropdownOpen(isDropdownOpen ? null : item.name)}
                         className={`flex items-center justify-between w-full px-4 py-3 text-sm font-medium transition-all duration-200 ${
                           isActive(item.href)
-                            ? 'text-primary-700 border-b-2 border-primary-600'
+                            ? 'text-primary-700'
                             : 'text-text-secondary hover:text-primary-600'
-                        }`}
+                        } relative group/nav`}
                       >
-                        <span>{item.name}</span>
+                        <span className="relative">
+                          {item.name}
+                          <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover/nav:w-full"></span>
+                        </span>
                         <svg 
                           className={`w-4 h-4 transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} 
                           fill="none" 
@@ -291,11 +300,14 @@ const Header = () => {
                     }}
                     className={`flex items-center px-4 py-3 text-sm font-medium transition-all duration-200 ${
                       isActive(item.href)
-                        ? 'text-primary-700 border-b-2 border-primary-600'
+                        ? 'text-primary-700'
                         : 'text-text-secondary hover:text-primary-600'
-                    }`}
+                    } relative group/nav`}
                   >
-                    <span>{item.name}</span>
+                    <span className="relative">
+                      {item.name}
+                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300 group-hover/nav:w-full"></span>
+                    </span>
                   </Link>
                 );
               })}
