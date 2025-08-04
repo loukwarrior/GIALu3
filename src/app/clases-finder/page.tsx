@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
@@ -8,7 +9,8 @@ import Image from 'next/image';
 import { X, ChevronDown, ChevronUp } from 'lucide-react';
 import videosData from '@/data/videos.json';
 
-const ClassFinder = () => {
+const ClassFinderContent = () => {
+  const searchParams = useSearchParams();
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
     yoga: false,
@@ -20,11 +22,45 @@ const ClassFinder = () => {
   });
   const [sortBy, setSortBy] = useState('newest');
 
+  // Leer parámetros de URL y aplicar filtros automáticamente
+  useEffect(() => {
+    const category = searchParams.get('category');
+    const subcategory = searchParams.get('subcategory');
+    const level = searchParams.get('level');
+    
+    const initialFilters: string[] = [];
+    
+    if (category) {
+      initialFilters.push(category);
+      // Expandir la sección correspondiente
+      setExpandedSections(prev => ({
+        ...prev,
+        [category]: true
+      }));
+    }
+    
+    if (subcategory) {
+      initialFilters.push(subcategory);
+    }
+    
+    if (level) {
+      initialFilters.push(level);
+      setExpandedSections(prev => ({
+        ...prev,
+        skills: true
+      }));
+    }
+    
+    if (initialFilters.length > 0) {
+      setSelectedFilters(initialFilters);
+    }
+  }, [searchParams]);
+
   // Categorizar clases
   const categorizedClasses = useMemo(() => {
     return videosData.filter(video => {
       if (selectedFilters.length === 0) return true;
-      return selectedFilters.some(filter => 
+      return selectedFilters.every(filter => 
         video.category?.toLowerCase() === filter.toLowerCase() ||
         video.subcategory?.toLowerCase() === filter.toLowerCase() ||
         video.level?.toLowerCase() === filter.toLowerCase()
@@ -128,7 +164,11 @@ const ClassFinder = () => {
                         <button
                           key={item}
                           onClick={() => addFilter(item === 'Todas las clases de Yoga' ? 'yoga' : item.toLowerCase())}
-                          className="block text-sm text-gray-600 hover:text-gray-900 py-1"
+                          className={`block text-sm py-1 w-full text-left ${
+                            selectedFilters.includes(item === 'Todas las clases de Yoga' ? 'yoga' : item.toLowerCase())
+                              ? 'text-primary-600 font-medium'
+                              : 'text-gray-600 hover:text-gray-900'
+                          }`}
                         >
                           {item}
                         </button>
@@ -152,7 +192,11 @@ const ClassFinder = () => {
                         <button
                           key={item}
                           onClick={() => addFilter(item === 'Todas las clases de Fitness' ? 'fitness' : item.toLowerCase())}
-                          className="block text-sm text-gray-600 hover:text-gray-900 py-1"
+                          className={`block text-sm py-1 w-full text-left ${
+                            selectedFilters.includes(item === 'Todas las clases de Fitness' ? 'fitness' : item.toLowerCase())
+                              ? 'text-primary-600 font-medium'
+                              : 'text-gray-600 hover:text-gray-900'
+                          }`}
                         >
                           {item}
                         </button>
@@ -224,7 +268,11 @@ const ClassFinder = () => {
                         <button
                           key={item}
                           onClick={() => addFilter(item.toLowerCase())}
-                          className="block text-sm text-gray-600 hover:text-gray-900 py-1"
+                          className={`block text-sm py-1 w-full text-left ${
+                            selectedFilters.includes(item.toLowerCase())
+                              ? 'text-primary-600 font-medium'
+                              : 'text-gray-600 hover:text-gray-900'
+                          }`}
                         >
                           {item}
                         </button>
@@ -325,6 +373,19 @@ const ClassFinder = () => {
 
       <Footer />
     </div>
+  );
+};
+
+const ClassFinder = () => {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary-600"></div>
+        <p className="mt-4 text-gray-600">Cargando clases...</p>
+      </div>
+    </div>}>
+      <ClassFinderContent />
+    </Suspense>
   );
 };
 

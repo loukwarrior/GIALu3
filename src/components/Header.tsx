@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Heart, Menu, X, User, Home, Play, BookOpen, Users, Sparkles, Search } from 'lucide-react';
+import { Heart, Menu, X, User, Home, Play, BookOpen, Users, Sparkles } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 
 type DropdownItem = {
@@ -43,13 +43,13 @@ const Header = () => {
         'CLASSES': {
           subtitle: 'Encuentra la clase perfecta de yoga para tu estado de ánimo.',
           items: [
-            { name: 'Todas las Clases de Yoga', href: '/yoga' },
-            { name: 'Hatha', href: '/yoga?subcategory=hatha' },
-            { name: 'Vinyasa', href: '/yoga?subcategory=vinyasa' },
-            { name: 'Restaurativo', href: '/yoga?subcategory=restaurativo' },
-            { name: 'Principiante', href: '/yoga?level=principiante' },
-            { name: 'Intermedio', href: '/yoga?level=intermedio' },
-            { name: 'Avanzado', href: '/yoga?level=avanzado' }
+            { name: 'Todas las Clases de Yoga', href: '/clases-finder?category=yoga' },
+            { name: 'Hatha', href: '/clases-finder?category=yoga&subcategory=hatha' },
+            { name: 'Vinyasa', href: '/clases-finder?category=yoga&subcategory=vinyasa' },
+            { name: 'Restaurativo', href: '/clases-finder?category=yoga&subcategory=restaurativo' },
+            { name: 'Principiante', href: '/clases-finder?category=yoga&level=principiante' },
+            { name: 'Intermedio', href: '/clases-finder?category=yoga&level=intermedio' },
+            { name: 'Avanzado', href: '/clases-finder?category=yoga&level=avanzado' }
           ]
         }
       }
@@ -62,13 +62,13 @@ const Header = () => {
         'CLASSES': {
           subtitle: 'Encuentra el entrenamiento perfecto para tu nivel de energía.',
           items: [
-            { name: 'Todas las Clases de Fitness', href: '/fitness' },
-            { name: 'Pilates', href: '/fitness?subcategory=pilates' },
-            { name: 'HIIT', href: '/fitness?subcategory=hiit' },
-            { name: 'Cardio', href: '/fitness?subcategory=cardio' },
-            { name: 'Principiante', href: '/fitness?level=principiante' },
-            { name: 'Intermedio', href: '/fitness?level=intermedio' },
-            { name: 'Avanzado', href: '/fitness?level=avanzado' }
+            { name: 'Todas las Clases de Fitness', href: '/clases-finder?category=fitness' },
+            { name: 'Pilates', href: '/clases-finder?category=fitness&subcategory=pilates' },
+            { name: 'HIIT', href: '/clases-finder?category=fitness&subcategory=hiit' },
+            { name: 'Cardio', href: '/clases-finder?category=fitness&subcategory=cardio' },
+            { name: 'Principiante', href: '/clases-finder?category=fitness&level=principiante' },
+            { name: 'Intermedio', href: '/clases-finder?category=fitness&level=intermedio' },
+            { name: 'Avanzado', href: '/clases-finder?category=fitness&level=avanzado' }
           ]
         }
       }
@@ -81,17 +81,16 @@ const Header = () => {
         'CLASSES': {
           subtitle: 'Encuentra paz y equilibrio con nuestras clases de bienestar.',
           items: [
-            { name: 'Todas las Clases de Wellness', href: '/wellness' },
-            { name: 'Meditación', href: '/wellness?subcategory=meditación' },
-            { name: 'Breathwork', href: '/wellness?subcategory=breathwork' },
-            { name: 'Mindfulness', href: '/wellness?subcategory=mindfulness' },
-            { name: 'Principiante', href: '/wellness?level=principiante' },
-            { name: 'Intermedio', href: '/wellness?level=intermedio' }
+            { name: 'Todas las Clases de Wellness', href: '/clases-finder?category=wellness' },
+            { name: 'Meditación', href: '/clases-finder?category=wellness&subcategory=meditación' },
+            { name: 'Breathwork', href: '/clases-finder?category=wellness&subcategory=breathwork' },
+            { name: 'Mindfulness', href: '/clases-finder?category=wellness&subcategory=mindfulness' },
+            { name: 'Principiante', href: '/clases-finder?category=wellness&level=principiante' },
+            { name: 'Intermedio', href: '/clases-finder?category=wellness&level=intermedio' }
           ]
         }
       }
     },
-    { name: 'Todas las Clases', href: '/clases-finder', icon: Search },
     { name: 'Instructores', href: '/instructores', icon: Users },
     { name: 'Mi Progreso', href: '/mi-progreso', icon: BookOpen },
   ];
