@@ -56,9 +56,9 @@ const ClassFinderContent = () => {
     }
   }, [searchParams]);
 
-  // Categorizar clases
+  // Categorizar y ordenar clases
   const categorizedClasses = useMemo(() => {
-    return videosData.filter(video => {
+    let filtered = videosData.filter(video => {
       if (selectedFilters.length === 0) return true;
       return selectedFilters.every(filter => 
         video.category?.toLowerCase() === filter.toLowerCase() ||
@@ -66,7 +66,33 @@ const ClassFinderContent = () => {
         video.level?.toLowerCase() === filter.toLowerCase()
       );
     });
-  }, [selectedFilters]);
+
+    // Aplicar ordenamiento
+    switch (sortBy) {
+      case 'newest':
+        return filtered.sort((a, b) => b.id - a.id); // Asumiendo que ID más alto = más nuevo
+      case 'most-relevant':
+        return filtered.sort((a, b) => a.title.localeCompare(b.title)); // Por título como relevancia
+      case 'most-popular':
+        return filtered.sort((a, b) => (b.views || 0) - (a.views || 0)); // Por popularidad (si existe campo views)
+      case 'alphabetical':
+        return filtered.sort((a, b) => a.title.localeCompare(b.title));
+      case 'duration-short':
+        return filtered.sort((a, b) => {
+          const durationA = parseInt(a.duration) || 0;
+          const durationB = parseInt(b.duration) || 0;
+          return durationA - durationB;
+        });
+      case 'duration-long':
+        return filtered.sort((a, b) => {
+          const durationA = parseInt(a.duration) || 0;
+          const durationB = parseInt(b.duration) || 0;
+          return durationB - durationA;
+        });
+      default:
+        return filtered;
+    }
+  }, [selectedFilters, sortBy]);
 
   const addFilter = (filter: string) => {
     if (!selectedFilters.includes(filter)) {
@@ -316,9 +342,11 @@ const ClassFinderContent = () => {
                   className="border border-gray-300 px-4 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500"
                 >
                   <option value="newest">Más Nuevos</option>
-                  <option value="oldest">Más Antiguos</option>
-                  <option value="duration">Duración</option>
-                  <option value="alphabetical">Alfabético</option>
+                  <option value="most-relevant">Más Relevante</option>
+                  <option value="most-popular">Más Popular</option>
+                  <option value="alphabetical">A → Z</option>
+                  <option value="duration-short">Duración Corta-Larga</option>
+                  <option value="duration-long">Duración Larga-Corta</option>
                 </select>
               </div>
 
