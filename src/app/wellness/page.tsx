@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Play, Clock, Heart, Filter, Search, Users, Target, Sparkles } from 'lucide-react';
+import { Clock, Heart, Filter, Search, Users, Target, Sparkles } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 import videosData from '@/data/videos.json';
 
@@ -224,8 +224,8 @@ const WellnessPage = () => {
                     </div>
 
                     <div className="absolute bottom-3 left-3">
-                      <span className={`inline-block ${getIntensityColor(video.intensity)} text-white px-2 py-1 rounded-full text-xs font-medium`}>
-                        Intensidad {video.intensity}
+                      <span className={`inline-block ${getIntensityColor(video.intensity || 1)} text-white px-2 py-1 rounded-full text-xs font-medium`}>
+                        Intensidad {video.intensity || 1}
                       </span>
                     </div>
 

@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Heart, Clock, Play, BookOpen, Calendar, Target, TrendingUp, Trophy, Flame } from 'lucide-react';
+import { Heart, Clock, Play, BookOpen, Calendar, TrendingUp, Trophy, Flame } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 
 const MiProgresoPage = () => {
-  const { state, actions } = useApp();
+  const { state } = useApp();
   const [activeTab, setActiveTab] = useState<'favorites' | 'history' | 'stats'>('stats');
 
   const formatDate = (dateString: string) => {

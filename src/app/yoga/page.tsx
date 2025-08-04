@@ -231,8 +231,8 @@ const YogaPage = () => {
 
                     {/* Intensity Badge */}
                     <div className="absolute bottom-3 left-3">
-                      <span className={`inline-block ${getIntensityColor(video.intensity)} text-white px-2 py-1 rounded-full text-xs font-medium`}>
-                        Intensidad {video.intensity}
+                      <span className={`inline-block ${getIntensityColor(video.intensity || 1)} text-white px-2 py-1 rounded-full text-xs font-medium`}>
+                        Intensidad {video.intensity || 1}
                       </span>
                     </div>
 
