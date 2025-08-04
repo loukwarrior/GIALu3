@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Clock, Heart, Filter, Search, Users, Target, Sparkles } from 'lucide-react';
+import { Clock, Heart, Filter, Search, Users, Target } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 import videosData from '@/data/videos.json';
 
@@ -206,7 +206,7 @@ const WellnessPage = () => {
                   <div className="relative aspect-video bg-gradient-to-br from-purple-100 to-pink-100">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <Sparkles className="w-6 h-6 text-purple-600 ml-1" />
+                        <div className="w-6 h-6 bg-purple-600 rounded-full ml-1"></div>
                       </div>
                     </div>
                     
@@ -276,7 +276,7 @@ const WellnessPage = () => {
         ) : (
           <div className="text-center py-16">
             <div className="w-24 h-24 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Sparkles className="w-12 h-12 text-purple-600" />
+              <div className="w-12 h-12 bg-purple-600 rounded-full"></div>
             </div>
             <h3 className="text-xl font-semibold text-text-primary mb-2">
               No se encontraron sesiones

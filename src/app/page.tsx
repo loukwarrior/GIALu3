@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { ArrowRight, Play, Heart, Clock, Users, Sparkles } from 'lucide-react';
+import { ArrowRight, Play, Heart, Clock, Users } from 'lucide-react';
 import mantrasData from '@/data/mantras.json';
 import videosData from '@/data/videos.json';
 
@@ -78,8 +78,7 @@ const HomePage = () => {
       <section className="relative overflow-hidden bg-gradient-to-br from-primary-50 via-white to-secondary-50">
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
           <div className="text-center">
-            <div className="inline-flex items-center space-x-2 bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full text-sm text-primary-700 border border-primary-200/50 mb-8">
-              <Sparkles className="w-4 h-4" />
+            <div className="inline-flex items-center bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full text-sm text-primary-700 border border-primary-200/50 mb-8">
               <span>Mantra de hoy</span>
             </div>
             

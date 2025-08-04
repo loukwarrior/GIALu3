@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { Users, Search, Instagram, Globe, Star, Award } from 'lucide-react';
+import { Users, Search, Instagram, Globe, Award } from 'lucide-react';
 import instructorsData from '@/data/instructors.json';
 import videosData from '@/data/videos.json';
 
@@ -99,7 +99,7 @@ const InstructoresPage = () => {
                   {instructor.featured && (
                     <div className="absolute top-4 left-4">
                       <span className="inline-flex items-center space-x-1 bg-yellow-500 text-white px-3 py-1 rounded-full text-xs font-medium">
-                        <Star className="w-3 h-3" />
+                        <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
                         <span>Destacado</span>
                       </span>
                     </div>

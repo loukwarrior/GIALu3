@@ -75,7 +75,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/glacial-indifference" type="text/css"/>
+        <link rel="stylesheet" href="https://fontlibrary.org/face/glacial-indifference" type="text/css"/>
       </head>
                   <body className="font-sans antialiased">
         <AppProvider>

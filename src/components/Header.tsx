@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Heart, Menu, X, User, Home, Play, BookOpen, Users, Sparkles } from 'lucide-react';
+import { Heart, Menu, X, User } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 
 type DropdownItem = {
@@ -19,7 +19,7 @@ type DropdownSection = {
 type NavigationItem = {
   name: string;
   href: string;
-  icon: React.ElementType;
+  icon?: React.ElementType;
   dropdown?: Record<string, DropdownSection>;
 };
 
@@ -34,11 +34,10 @@ const Header = () => {
   }, []);
 
   const navigation: NavigationItem[] = [
-    { name: 'Inicio', href: '/', icon: Home },
+    { name: 'Inicio', href: '/' },
     { 
       name: 'Yoga', 
-      href: '/yoga', 
-      icon: Sparkles,
+      href: '/yoga',
       dropdown: {
         'CLASSES': {
           subtitle: 'Encuentra la clase perfecta de yoga para tu estado de ánimo.',
@@ -56,8 +55,7 @@ const Header = () => {
     },
     { 
       name: 'Fitness', 
-      href: '/fitness', 
-      icon: Play,
+      href: '/fitness',
       dropdown: {
         'CLASSES': {
           subtitle: 'Encuentra el entrenamiento perfecto para tu nivel de energía.',
@@ -75,8 +73,7 @@ const Header = () => {
     },
     { 
       name: 'Wellness', 
-      href: '/wellness', 
-      icon: Heart,
+      href: '/wellness',
       dropdown: {
         'CLASSES': {
           subtitle: 'Encuentra paz y equilibrio con nuestras clases de bienestar.',
@@ -91,8 +88,8 @@ const Header = () => {
         }
       }
     },
-    { name: 'Instructores', href: '/instructores', icon: Users },
-    { name: 'Mi Progreso', href: '/mi-progreso', icon: BookOpen },
+    { name: 'Instructores', href: '/instructores' },
+    { name: 'Mi Progreso', href: '/mi-progreso' },
   ];
 
   const isActive = (href: string) => {
@@ -125,7 +122,6 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
             {navigation.map((item) => {
-              const Icon = item.icon;
               const hasDropdown = item.dropdown;
               
               if (hasDropdown) {
@@ -133,13 +129,12 @@ const Header = () => {
                   <div key={item.name} className="relative group">
                     <Link
                       href={item.href}
-                      className={`flex items-center space-x-2 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
+                      className={`flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
                         isActive(item.href)
                           ? 'bg-primary-100 text-primary-700 shadow-sm'
                           : 'text-text-secondary hover:text-primary-600 hover:bg-primary-50'
                       }`}
                     >
-                      <Icon className="w-4 h-4" />
                       <span>{item.name}</span>
                     </Link>
                     
@@ -177,13 +172,12 @@ const Header = () => {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`flex items-center space-x-2 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
+                  className={`flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
                     isActive(item.href)
                       ? 'bg-primary-100 text-primary-700 shadow-sm'
                       : 'text-text-secondary hover:text-primary-600 hover:bg-primary-50'
                   }`}
                 >
-                  <Icon className="w-4 h-4" />
                   <span>{item.name}</span>
                 </Link>
               );
@@ -224,19 +218,17 @@ const Header = () => {
           <div className="md:hidden py-4 border-t border-primary-100/50 bg-white/95 backdrop-blur-sm">
             <nav className="flex flex-col space-y-2">
               {navigation.map((item) => {
-                const Icon = item.icon;
                 return (
                   <Link
                     key={item.name}
                     href={item.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className={`flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
+                    className={`flex items-center px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 ${
                       isActive(item.href)
                         ? 'bg-primary-100 text-primary-700'
                         : 'text-text-secondary hover:text-primary-600 hover:bg-primary-50'
                     }`}
                   >
-                    <Icon className="w-5 h-5" />
                     <span>{item.name}</span>
                   </Link>
                 );
