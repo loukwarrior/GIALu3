@@ -1,0 +1,151 @@
+/* Estilos personalizados para el reproductor de video */
+
+/* Slider de volumen personalizado */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-track {
+  background: rgba(255, 255, 255, 0.3);
+  height: 4px;
+  border-radius: 2px;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #E8DAEF; /* Color primario de GIA */
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.slider::-webkit-slider-thumb:hover {
+  background: #F8BBD9; /* Color secundario de GIA */
+  transform: scale(1.2);
+}
+
+.slider::-moz-range-track {
+  background: rgba(255, 255, 255, 0.3);
+  height: 4px;
+  border-radius: 2px;
+  border: none;
+}
+
+.slider::-moz-range-thumb {
+  background: #E8DAEF;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.slider::-moz-range-thumb:hover {
+  background: #F8BBD9;
+  transform: scale(1.2);
+}
+
+/* Animaciones para el reproductor */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.video-controls-enter {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Estilos para el spinner de carga */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Estilos para botones del reproductor */
+.video-button {
+  transition: all 0.2s ease;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.video-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.1);
+}
+
+/* Estilos para la barra de progreso */
+.progress-bar {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(2px);
+}
+
+/* Responsive design para controles */
+@media (max-width: 640px) {
+  .video-controls {
+    padding: 12px;
+  }
+  
+  .video-controls .time-display {
+    font-size: 12px;
+  }
+  
+  .video-controls .volume-control {
+    display: none; /* Ocultar control de volumen en móvil */
+  }
+}
+
+/* Estilos para pantalla completa */
+.video-player:fullscreen {
+  object-fit: contain;
+}
+
+.video-player:-webkit-full-screen {
+  object-fit: contain;
+}
+
+.video-player:-moz-full-screen {
+  object-fit: contain;
+}
+
+/* Mejoras de accesibilidad */
+.video-button:focus {
+  outline: 2px solid #E8DAEF;
+  outline-offset: 2px;
+}
+
+.slider:focus {
+  outline: 2px solid #E8DAEF;
+  outline-offset: 2px;
+}

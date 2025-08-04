@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Open_Sans, Dancing_Script, Josefin_Sans } from "next/font/google";
 import { AppProvider } from "@/context/AppContext";
 import "./globals.css";
+import "../styles/video-player.css";
 
 const inter = Inter({ 
   subsets: ["latin"],

@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import VideoPlayer from '@/components/VideoPlayer';
 import { ArrowLeft, Heart, Clock, Target, Play, CheckCircle } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 import videosData from '@/data/videos.json';
@@ -105,27 +106,21 @@ const VideoPage = () => {
           {/* Video Player Section */}
           <div className="lg:col-span-2">
             {/* Video Player */}
-            <div className="bg-white rounded-2xl overflow-hidden shadow-lg mb-6">
+            <div className="bg-white overflow-hidden shadow-lg mb-6">
               <div className="relative aspect-video">
-                {!isWatching ? (
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary-100 to-secondary-100 flex items-center justify-center">
-                    <button
-                      onClick={handleVideoStart}
-                      className="w-20 h-20 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-lg"
-                    >
-                      <Play className="w-8 h-8 text-primary-600 ml-1" />
-                    </button>
-                  </div>
-                ) : (
-                  <iframe
-                    src={video.videoUrl}
-                    title={video.title}
-                    className="w-full h-full"
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  />
-                )}
+                <VideoPlayer
+                  videoUrl={video.videoUrl}
+                  title={video.title}
+                  thumbnail={video.thumbnail}
+                  onPlay={handleVideoStart}
+                  onProgress={(progress) => {
+                    // Marcar como visto al 10% del video
+                    if (progress > 10 && !isWatching) {
+                      setIsWatching(true);
+                    }
+                  }}
+                  className="w-full h-full"
+                />
               </div>
             </div>
 

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import VideoPlayer from '@/components/VideoPlayer';
 import { ArrowRight, Play, Heart, Clock } from 'lucide-react';
 import mantrasData from '@/data/mantras.json';
 import videosData from '@/data/videos.json';
@@ -54,15 +55,18 @@ const HomePage = () => {
       <section className="relative h-screen overflow-hidden">
         {/* Video Background */}
         <div className="absolute inset-0">
-          <iframe
-            src="https://www.youtube.com/embed/v7AYKMP6rOE?autoplay=1&mute=1&loop=1&playlist=v7AYKMP6rOE&controls=0&showinfo=0&rel=0&iv_load_policy=3&modestbranding=1&playsinline=1"
-            className="absolute inset-0 w-full h-full object-cover scale-150"
-            allow="autoplay; encrypted-media"
-            style={{ 
-              pointerEvents: 'none',
-              transform: 'scale(1.1)',
-            }}
-          />
+          {/* Video de fondo - usando el primer video como ejemplo, puedes cambiar la URL */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover scale-110"
+            style={{ pointerEvents: 'none' }}
+          >
+            <source src="/videos/hero-background.mp4" type="video/mp4" />
+            <source src="/videos/hero-background.webm" type="video/webm" />
+          </video>
           {/* Dark overlay for better text readability */}
           <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-primary-900/40"></div>
         </div>
