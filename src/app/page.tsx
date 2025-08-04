@@ -50,7 +50,6 @@ const HomePage = () => {
     {
       name: 'Yoga',
       description: 'Encuentra equilibrio entre cuerpo y mente',
-      icon: '🧘‍♀️',
       color: 'from-purple-200 to-purple-300',
       href: '/yoga',
       count: videosData.filter(v => v.category === 'yoga').length
@@ -58,7 +57,6 @@ const HomePage = () => {
     {
       name: 'Fitness',
       description: 'Fortalece tu cuerpo con entrenamientos dinámicos',
-      icon: '💪',
       color: 'from-orange-200 to-orange-300',
       href: '/fitness',
       count: videosData.filter(v => v.category === 'fitness').length
@@ -66,7 +64,6 @@ const HomePage = () => {
     {
       name: 'Wellness',
       description: 'Cultiva tu bienestar integral y mindfulness',
-      icon: '✨',
       color: 'from-pink-200 to-pink-300',
       href: '/wellness',
       count: videosData.filter(v => v.category === 'wellness').length
@@ -145,16 +142,13 @@ const HomePage = () => {
               >
                                  <div className={`relative overflow-hidden bg-gradient-to-br ${category.color} rounded-3xl p-8 h-full transition-all duration-300 hover:scale-105 hover:shadow-xl`}>
                   <div className="text-center">
-                    <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                      {category.icon}
-                    </div>
-                    <h3 className="text-xl font-semibold text-text-primary mb-3">
+                    <h3 className="text-2xl font-bold text-text-primary mb-4 font-display">
                       {category.name}
                     </h3>
-                    <p className="text-text-secondary mb-4 text-sm leading-relaxed">
+                    <p className="text-text-secondary mb-6 text-sm leading-relaxed">
                       {category.description}
                     </p>
-                    <div className="flex items-center justify-center space-x-2 text-sm text-primary-700">
+                    <div className="flex items-center justify-center space-x-2 text-sm text-primary-700 font-medium">
                       <Users className="w-4 h-4" />
                       <span>{category.count} clases</span>
                     </div>

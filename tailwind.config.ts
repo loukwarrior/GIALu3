@@ -64,12 +64,13 @@ export default {
         }
       },
       fontFamily: {
-        'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
+        'sans': ['Glacial Indifference', 'Inter', 'ui-sans-serif', 'system-ui'],
         'serif': ['ui-serif', 'Georgia'],
         'mono': ['ui-monospace', 'SFMono-Regular'],
-        'display': ['Inter', 'ui-sans-serif'],
-        'body': ['Open Sans', 'ui-sans-serif'],
+        'display': ['Glacial Indifference', 'Inter', 'ui-sans-serif'],
+        'body': ['Glacial Indifference', 'Open Sans', 'ui-sans-serif'],
         'accent': ['Dancing Script', 'cursive'],
+        'logo': ['Josefin Sans', 'Inter', 'ui-sans-serif'],
       },
       fontSize: {
         'xs': '.75rem',
