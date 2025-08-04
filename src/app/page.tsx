@@ -189,13 +189,16 @@ const HomePage = () => {
       </section>
 
       {/* Community CTA Section */}
-      <section className="relative py-24 bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-600 overflow-hidden">
+      <section className="relative py-24 overflow-hidden bg-cover bg-center bg-no-repeat" style={{backgroundImage: 'url(https://g8vcni9w6iprkhuv.public.blob.vercel-storage.com/DSC08282c.JPG)'}}>
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-black/70"></div>
+        
         {/* Background Decorative Elements */}
         <div className="absolute inset-0">
           {/* Large Circle */}
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
           {/* Medium Circle */}
-          <div className="absolute -bottom-16 -left-16 w-64 h-64 bg-secondary-300/20 rounded-full blur-2xl"></div>
+          <div className="absolute -bottom-16 -left-16 w-64 h-64 bg-primary-300/20 rounded-full blur-2xl"></div>
           {/* Small Floating Elements */}
           <div className="absolute top-1/4 left-1/4 w-8 h-8 bg-white/20 rounded-full animate-pulse"></div>
           <div className="absolute bottom-1/3 right-1/3 w-6 h-6 bg-primary-200/30 rounded-full animate-pulse delay-1000"></div>
