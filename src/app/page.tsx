@@ -64,8 +64,8 @@ const HomePage = () => {
             className="absolute inset-0 w-full h-full object-cover scale-110"
             style={{ pointerEvents: 'none' }}
           >
-            <source src="/videos/hero-background.mp4" type="video/mp4" />
-            <source src="/videos/hero-background.webm" type="video/webm" />
+            <source src="https://g8vcni9w6iprkhuv.public.blob.vercel-storage.com/videos/hero-background.mp4" type="video/mp4" />
+            <source src="https://g8vcni9w6iprkhuv.public.blob.vercel-storage.com/videos/hero-background.webm" type="video/webm" />
           </video>
           {/* Dark overlay for better text readability */}
           <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-black/30 to-primary-900/40"></div>

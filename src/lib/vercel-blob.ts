@@ -65,13 +65,12 @@ export async function listVideos() {
 
 // Función helper para generar URLs de Vercel Blob
 export function getBlobVideoUrl(filename: string) {
-  // Esta URL se generará automáticamente cuando subas los videos
-  // Formato típico: https://[random-id].public.blob.vercel-storage.com/[filename]
-  return `https://[tu-blob-storage-id].public.blob.vercel-storage.com/videos/${filename}`;
+  // URL base de tu Vercel Blob Storage
+  return `https://g8vcni9w6iprkhuv.public.blob.vercel-storage.com/videos/${filename}`;
 }
 
 // Función para generar thumbnail desde video
 export function getBlobThumbnailUrl(videoFilename: string) {
   const thumbnailName = videoFilename.replace(/\.(mp4|webm|mov)$/i, '.jpg');
-  return `https://[tu-blob-storage-id].public.blob.vercel-storage.com/thumbnails/${thumbnailName}`;
+  return `https://g8vcni9w6iprkhuv.public.blob.vercel-storage.com/thumbnails/${thumbnailName}`;
 }
