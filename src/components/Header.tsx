@@ -35,7 +35,6 @@ const Header = () => {
   }, []);
 
   const navigation: NavigationItem[] = [
-    { name: 'INICIO', href: '/' },
     { 
       name: 'YOGA', 
       href: '/yoga',
@@ -102,25 +101,19 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-primary-100/50 shadow-lg shadow-gray-200/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-start items-center h-16 space-x-8">
+        <div className="flex justify-start items-center h-16 space-x-4">
           {/* Logo */}
           <Link 
             href="/" 
-            className="flex items-center space-x-2 group"
+            className="flex items-center group"
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-primary-200 to-secondary-200 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
-              <span className="text-primary-700 font-logo text-xl font-bold">G</span>
-            </div>
-            <div className="hidden sm:block">
-              <h1 className="text-2xl font-logo font-black bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">
-                GIA
-              </h1>
-              <p className="text-xs text-text-secondary -mt-1 font-sans">Wellness</p>
-            </div>
+            <h1 className="text-3xl font-logo font-black text-gray-900 hover:text-primary-600 transition-colors duration-200">
+              GIA
+            </h1>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
+          <nav className="hidden md:flex items-center space-x-4">
             {navigation.map((item) => {
               const hasDropdown = item.dropdown;
               
@@ -196,7 +189,7 @@ const Header = () => {
               );
             })}
             {/* Desktop Actions */}
-            <div className="hidden md:flex items-center space-x-6 ml-auto">
+            <div className="hidden md:flex items-center space-x-4 ml-auto">
             <Link
               href="/mis-clases"
               className="relative p-2 text-text-secondary hover:text-primary-600 transition-colors duration-200"

@@ -190,7 +190,7 @@ const HomePage = () => {
                 No hay clases disponibles todavía
               </h3>
               <p className="text-text-secondary max-w-md mx-auto">
-                Estamos preparando contenido increíble para ti. ¡Vuelve pronto para descubrir nuestras clases de yoga, pilates y bienestar!
+                Estamos preparando contenido increíble para ti. ¡Vuelve pronto para descubrir nuestras clases de yoga, fitness y wellness!
               </p>
             </div>
           )}
