@@ -100,7 +100,7 @@ const Header = () => {
   };
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-primary-100/50">
+    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-primary-100/50 shadow-lg shadow-gray-200/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -141,7 +141,7 @@ const Header = () => {
                     </button>
                     
                     {/* Dropdown Menu - Left Half Style */}
-                    <div className="fixed top-[4rem] left-0 w-[50vw] bg-white rounded-r-2xl shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
+                    <div className="fixed top-[4rem] left-0 w-[50vw] bg-white shadow-2xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-50">
                       {item.dropdown && Object.entries(item.dropdown).map(([sectionName, section]) => (
                         <div key={sectionName} className="p-6">
                           {/* Header Section */}
@@ -160,7 +160,7 @@ const Header = () => {
                               <Link
                                 key={dropdownItem.name}
                                 href={dropdownItem.href}
-                                className="group/item flex items-center px-4 py-3 rounded-lg hover:bg-gray-50 transition-all duration-200"
+                                className="group/item flex items-center px-4 py-3 hover:bg-gray-50 transition-all duration-200"
                               >
                                 <span className="text-gray-700 group-hover/item:text-primary-700 font-medium transition-colors duration-200">
                                   {dropdownItem.name}
