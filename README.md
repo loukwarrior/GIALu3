@@ -1,233 +1,326 @@
-# 🧘‍♀️ GIA - Wellness Community
+<p align="center">
+  <img src="assets/factory-overview.png" alt="SaaS Factory - The Machine that Builds the Machine" width="800"/>
+</p>
 
-Una aplicación web moderna y responsive para la marca de ropa deportiva femenina **GIA**, centrada en yoga, pilates, meditación y bienestar. Este MVP está diseñado para generar comunidad antes del lanzamiento de la tienda de ropa.
+<p align="center">
+  <img src="assets/v4-skill-first.png" alt="SaaS Factory V4 — Skill First: Construir, Inteligencia, Calidad, Evolucion" width="800"/>
+</p>
 
-![GIA Wellness Community](https://via.placeholder.com/1200x600/E8DAEF/2C3E50?text=GIA+Wellness+Community)
+<h1 align="center">SaaS Factory V4</h1>
 
-## ✨ Características Principales
+<p align="center">
+  <strong>La maquina que construye la maquina es mas importante que el producto.</strong><br/>
+  <em>— Elon Musk</em>
+</p>
 
-### 🏠 Página de Bienvenida
-- **Mantra diario** que cambia automáticamente según el día del año
-- Hero section inspiradora con gradientes suaves
-- Preview de categorías destacadas
-- Call-to-action hacia el catálogo de clases
-
-### 📺 Catálogo de Videos
-- **12 videos** organizados por categorías: Yoga, Pilates, Meditación, Tips de bienestar
-- Videos embebidos desde **YouTube** (sin subir archivos propios)
-- **Filtros avanzados** por:
-  - ⏱️ **Duración**: Corto (< 15 min), Medio (15-30 min), Largo (> 30 min)
-  - 📊 **Nivel**: Principiante, Intermedio, Avanzado
-  - 🎯 **Objetivo**: Relajación, Energía, Tonificación, Bienestar
-  - 🏷️ **Categoría**: Yoga, Pilates, Meditación, Bienestar
-- **Búsqueda inteligente** por título, instructor, descripción y tags
-- **Sistema de favoritos** con persistencia local
-
-### 🎬 Reproductor de Video
-- Player embebido responsive de YouTube
-- **Información detallada** del video (título, descripción, instructor)
-- **Botón de favorito** persistente
-- **Videos relacionados** en sidebar
-- **Marcado automático** como "visto" después de 5 segundos
-- **Estado de completado** visual
-
-### 💖 Sección "Mis Clases"
-- **Estadísticas personales**: videos completados, favoritos, minutos de práctica
-- **Tab de Favoritos** con grid visual
-- **Tab de Historial** con lista cronológica
-- **Categoría favorita** calculada automáticamente
-- **Estados vacíos** informativos y motivacionales
-
-### 🎨 Diseño y UX
-- **Diseño femenino, relajado y minimalista**
-- **Paleta de colores GIA**: 
-  - 💜 Primary: Lavanda suave (#E8DAEF)
-  - 💗 Secondary: Rosa claro (#F8BBD9)
-  - 🤍 Accent: Crema (#FAF2F2)
-  - 📝 Text: Gris azulado (#2C3E50)
-- **Tipografía moderna**: Inter (headings), Open Sans (body), Dancing Script (accent)
-- **Totalmente responsive** para móvil, tablet y desktop
-- **Animaciones sutiles** y transiciones suaves
-- **Glass morphism** y efectos de backdrop blur
-
-## 🏗️ Arquitectura Técnica
-
-### 🛠️ Stack Tecnológico
-- **Framework**: Next.js 15.4 con App Router
-- **Estilado**: Tailwind CSS 3 con configuración personalizada
-- **Lenguaje**: TypeScript para type safety
-- **Estado Global**: React Context API con useReducer
-- **Iconos**: Lucide React
-- **Persistencia**: LocalStorage para favoritos e historial
-
-### 📁 Estructura del Proyecto
-```
-GIALu/
-├── src/
-│   ├── app/                    # Páginas Next.js (App Router)
-│   │   ├── page.tsx           # Página principal
-│   │   ├── clases/            # Catálogo de videos
-│   │   ├── video/[id]/        # Reproductor individual
-│   │   ├── mis-clases/        # Favoritos e historial
-│   │   ├── layout.tsx         # Layout principal
-│   │   └── globals.css        # Estilos globales
-│   ├── components/            # Componentes reutilizables
-│   │   └── Header.tsx         # Navegación principal
-│   ├── context/               # Estado global
-│   │   └── AppContext.tsx     # Context API
-│   ├── data/                  # Datos simulados
-│   │   ├── videos.json        # 12 videos con metadata
-│   │   └── mantras.json       # 10 mantras inspiradores
-│   └── hooks/                 # Hooks personalizados (futuro)
-├── public/                    # Assets estáticos
-├── tareas.md                  # Roadmap del proyecto
-└── README.md                  # Este archivo
-```
-
-### 🔄 Gestión de Estado
-El estado global se maneja con **React Context API** y incluye:
-- **Favoritos**: Videos marcados como favoritos
-- **Historial**: Videos vistos con timestamp
-- **Video actual**: Video en reproducción
-- **Usuario**: Información básica (preparado para autenticación)
-
-**Persistencia**: Los datos se guardan automáticamente en localStorage y se restauran al recargar la página.
-
-## 🚀 Instalación y Uso
-
-### 📋 Prerrequisitos
-- Node.js 18+ 
-- npm o yarn
-
-### ⚡ Instalación Rápida
-```bash
-# Clonar el repositorio
-git clone https://github.com/tuusuario/GIALu.git
-cd GIALu
-
-# Instalar dependencias
-npm install
-
-# Ejecutar en desarrollo
-npm run dev
-```
-
-La aplicación estará disponible en `http://localhost:3000`
-
-### 📝 Scripts Disponibles
-```bash
-npm run dev          # Servidor de desarrollo
-npm run build        # Build de producción
-npm run start        # Servidor de producción
-npm run lint         # Linting del código
-```
-
-## 🎯 Funcionalidades Implementadas
-
-### ✅ Core MVP (Fase 1 - 80% del valor)
-- [x] Configuración inicial Next.js + Tailwind CSS
-- [x] Sistema de diseño (colores GIA: lavanda, rosa claro, crema)
-- [x] Datos simulados JSON (videos, mantras, categorías)
-- [x] Página de bienvenida con mantra diario
-- [x] Catálogo de videos con filtros básicos
-- [x] Reproductor de video embebido
-- [x] Sistema de favoritos (Context API)
-- [x] Sección "Mis Clases"
-- [x] Responsive design móvil/desktop
-- [x] Navegación Header con contadores
-- [x] Estados vacíos y loading
-- [x] Persistencia en localStorage
-
-### 🔮 Próximas Funcionalidades
-
-#### 🎨 Fase 2: Experiencia de Usuario (15% del valor)
-- [ ] Animaciones sutiles y transiciones
-- [ ] Loading states y skeletons
-- [ ] Búsqueda avanzada de videos
-- [ ] Categorías visuales con iconos
-- [ ] Progress tracking de videos
-- [ ] Notificaciones motivacionales
-
-#### 🔧 Fase 3: Optimización y Escalabilidad (5% del valor)
-- [ ] SEO optimization
-- [ ] Performance optimization
-- [ ] PWA capabilities
-- [ ] Analytics básicos
-- [ ] Error boundaries
-- [ ] Testing unitario
-
-## 🔮 Futuras Integraciones Preparadas
-
-La arquitectura está diseñada para escalar fácilmente:
-
-### 🔐 Autenticación
-- Context API listo para JWT/OAuth
-- Estructura de usuario preparada
-- Rutas protegidas planificadas
-
-### 🛒 E-commerce
-- Arquitectura modular para integrar tienda
-- Componentes preparados para productos
-- Estado global extensible para carrito
-
-### 💳 Pagos y Suscripciones
-- Estructura para integrar Stripe
-- Estado global para planes premium
-- Componentes de paywall preparados
-
-### 📱 App Móvil
-- Diseño responsive como base
-- Estructura de componentes reutilizable
-- Estado global compartible con React Native
-
-## 📊 Métricas de Éxito
-
-El MVP está diseñado para medir:
-- **Engagement**: Tiempo promedio en la app
-- **Retención**: Videos favoritos por usuario
-- **Crecimiento**: Nuevos usuarios orgánicos
-- **Satisfacción**: Feedback de la comunidad
-
-## 🎨 Diseño Visual
-
-### 🌈 Paleta de Colores
-```css
-Primary (Lavanda):   #E8DAEF
-Secondary (Rosa):    #F8BBD9  
-Accent (Crema):      #FAF2F2
-Text Primary:        #2C3E50
-Text Secondary:      #5A6B7D
-Text Muted:         #8B9AAB
-```
-
-### ✍️ Tipografía
-- **Headings**: Inter (redondeada, moderna)
-- **Body**: Open Sans (legible, amigable)  
-- **Accent**: Dancing Script (elegante, femenina)
-
-### 📱 Responsive Design
-- **Mobile First**: Optimizado para móviles
-- **Breakpoints**: 475px, 640px, 768px, 1024px, 1280px
-- **Grid Adaptativo**: 1-4 columnas según dispositivo
-
-## 🤝 Contribución
-
-Este es un proyecto MVP. Para contribuir:
-
-1. Fork el repositorio
-2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
-3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
-4. Push a la rama (`git push origin feature/AmazingFeature`)
-5. Abre un Pull Request
-
-## 📄 Licencia
-
-Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
-
-## 👥 Equipo
-
-Desarrollado con 💜 para la comunidad **GIA** - Empoderando mujeres a través del bienestar integral.
+<p align="center">
+  <a href="#que-es-saas-factory">Que Es</a> &bull;
+  <a href="#el-golden-path">Tech Stack</a> &bull;
+  <a href="#15-skills-tu-caja-de-herramientas">15 Skills</a> &bull;
+  <a href="#3-mcps-tus-sentidos">MCPs</a> &bull;
+  <a href="#instalacion-2-minutos">Instalacion</a>
+</p>
 
 ---
 
-**GIA Wellness** - *Tu práctica, tu comunidad, tu bienestar* 🧘‍♀️✨
+## Que es SaaS Factory
+
+La mayoria esta ahi afuera haciendo **"Vibe Coding"**, tirando prompts al azar o atrapados en el infierno del No-Code construyendo telaranas que se rompen cuando las miras feo.
+
+SaaS Factory es la **infraestructura exacta** para que el codigo deje de ser dados al azar y se convierta en un **activo empresarial**. Un sistema donde la IA no "adivina" — ejecuta con **precision industrial**.
+
+<p align="center">
+  <img src="assets/header.png" alt="De Artesano a Arquitecto" width="600"/>
+</p>
+
+Cuando ejecutas `saas-factory`, copias toda la **infraestructura de la fabrica** al directorio actual. No es un template vacio. Es **production-ready desde el minuto 0**.
+
+```
+tu-proyecto/
+├── CLAUDE.md                  # Factory OS — Cerebro del agente
+├── GEMINI.md                  # Espejo para Gemini
+├── .mcp.json                  # 3 MCPs configurados (Next.js, Playwright, Supabase)
+├── src/                       # App con Feature-First Architecture
+├── .claude/
+│   ├── skills/                # 22 skills (V4) — Todo es un Skill
+│   ├── memory/                # Memoria persistente por proyecto
+│   ├── PRPs/                  # Blueprints de features
+│   └── design-systems/        # 5 sistemas de diseno
+└── package.json               # Next.js 16, React 19, Tailwind 3.4
+```
+
+---
+
+## V4: Todo es un Skill
+
+V4 unifica commands, agents y prompts en un solo concepto: **Skills**.
+
+```
+V3: commands/ + agents/ + prompts/ (3 dirs, fragmentado)
+V4: skills/ (1 dir, 22 skills unificados con YAML metadata)
+```
+
+El usuario habla en lenguaje natural. El agente decide que skill activar:
+
+```
+"Quiero crear una app" → skill NEW-APP (entrevista de negocio)
+"Necesito una landing" → skill LANDING (scroll-stop cinematico)
+"Quiero agregar IA"    → skill AI (11 templates: chat, RAG, vision, tools...)
+"Optimiza este skill"  → skill AUTORESEARCH (loop autonomo de mejora)
+```
+
+---
+
+## 22 Skills: Tu Caja de Herramientas
+
+### Skills que el usuario invoca
+
+| Skill | Que hace |
+|-------|---------|
+| `/new-app` | Entrevista de negocio → genera `BUSINESS_LOGIC.md` con la especificacion completa |
+| `/landing` | Landing cinematica estilo Apple: scroll-driven video + copy AIDA/PAS + glass-morphism |
+| `/primer` | Carga contexto del proyecto al inicio de sesion |
+| `/add-login` | Auth completo con Supabase (Email + Google OAuth + profiles + RLS) |
+| `/ai [template]` | 11 templates de IA: chat, RAG, vision, tools, web search, structured outputs |
+| `/prp [feature]` | Genera Product Requirements Proposal antes de implementar |
+| `/bucle-agentico` | Implementa features complejas por fases coordinadas (DB + API + UI) |
+| `/sprint` | Tareas rapidas sin planificacion (un fix, un componente, algo simple) |
+| `/qa` | Testing automatizado con Playwright CLI |
+| `/memory-manager` | Memoria persistente POR PROYECTO en `.claude/memory/` (reemplaza auto-memory) |
+| `/image-generation` | Genera y edita imagenes con OpenRouter + Gemini |
+| `/autoresearch` | Auto-optimiza skills con loop autonomo (patron Karpathy) |
+| `/skill-creator` | Crea nuevos skills para extender la fabrica |
+| `/eject-sf` | Remueve SaaS Factory del proyecto (destructivo) |
+| `/update-sf` | Actualiza a la ultima version |
+
+### Skills que el agente activa automaticamente
+
+| Skill | Se activa cuando... |
+|-------|---------------------|
+| `frontend` | UI/UX, componentes React, Tailwind, animaciones |
+| `backend` | Server Actions, APIs, logica de negocio, validaciones Zod |
+| `supabase-admin` | Migraciones, RLS, queries SQL, configurar auth |
+| `codebase-analyst` | Analisis de patrones, convenciones, arquitectura |
+| `vercel-deployer` | Deploy, env vars, dominios, rollbacks |
+| `documentacion` | Actualizar docs despues de cambios en codigo |
+| `calidad` | Testing, quality gates, validacion |
+
+---
+
+## Memoria Persistente por Proyecto
+
+SaaS Factory V4 incluye un sistema de memoria que vive **dentro del repo**, no en tu maquina:
+
+```
+.claude/memory/
+├── MEMORY.md       # Indice (se carga automaticamente)
+├── user/           # Preferencias del usuario/equipo
+├── feedback/       # Correcciones (que hacer/no hacer)
+├── project/        # Decisiones y estado de iniciativas
+└── reference/      # Patrones, soluciones, donde encontrar cosas
+```
+
+**vs Auto-memory de Claude Code:**
+
+| | Auto-memory (default) | Memory Manager (V4) |
+|-|---|---|
+| **Ubicacion** | `~/.claude/projects/` (local) | `.claude/memory/` (en el repo) |
+| **Viaja con git** | No | Si |
+| **Versionado** | No | Si (cada cambio es un commit) |
+| **Compartido con equipo** | No | Si |
+| **Control** | Claude decide | Tu decides |
+
+La primera vez que se usa, el skill deshabilita automaticamente la auto-memory de Claude Code y crea la estructura.
+
+---
+
+## El Golden Path
+
+> *"Pueden tener el coche del color que quieran, siempre que sea negro."* — Henry Ford
+
+Un solo stack perfeccionado. Sin opciones. Solo el camino dorado:
+
+| Capa | Tecnologia | Por Que |
+|------|------------|---------|
+| **Frontend** | Next.js 16 + React 19 + TypeScript | Full-stack, Turbopack |
+| **Estilos** | Tailwind CSS 3.4 + shadcn/ui | Utility-first, sin context switching |
+| **Backend** | Supabase (Auth + DB + Storage + RLS) | PostgreSQL completo sin servidor |
+| **AI Engine** | Vercel AI SDK v5 + OpenRouter (300+ modelos) | Multi-model, sin vendor lock-in |
+| **Validacion** | Zod | Type-safe schemas |
+| **Estado** | Zustand | Lightweight client state |
+| **Testing** | Playwright MCP | Validacion visual automatica |
+| **Deploy** | Vercel | Un click a produccion |
+
+---
+
+## 3 MCPs: Tus Sentidos
+
+```typescript
+// next.config.ts — Esta linea lo cambia todo
+experimental: { mcpServer: true }
+```
+
+| MCP | Rol | Superpoder |
+|-----|-----|------------|
+| **Next.js DevTools** | Quality Control | Lee errores/logs en tiempo real via `/_next/mcp` |
+| **Playwright** | Ojos | Captura screenshots, valida UX visualmente |
+| **Supabase** | Manos | Ejecuta SQL, migraciones, consulta logs |
+
+**Sin MCPs:** La IA adivina que esta roto.
+**Con MCPs:** La IA **ve** exactamente que esta roto y por que.
+
+---
+
+## Arquitectura Feature-First
+
+Todo el contexto de una feature en un solo lugar:
+
+```
+src/
+├── app/                      # Next.js App Router
+│   ├── (auth)/               # Rutas de autenticacion
+│   └── (main)/               # Rutas principales
+│
+├── features/                  # Organizadas por funcionalidad
+│   └── [feature]/
+│       ├── components/       # UI de la feature
+│       ├── hooks/            # Logica
+│       ├── services/         # API calls
+│       ├── types/            # Tipos
+│       └── store/            # Estado
+│
+└── shared/                    # Codigo reutilizable
+    ├── components/
+    ├── hooks/
+    ├── lib/
+    └── types/
+```
+
+---
+
+## 5 Design Systems
+
+| Sistema | Vibe |
+|---------|------|
+| **Neobrutalism** | Bordes duros, colores primarios, sombras offset |
+| **Neumorphism** | Soft UI con sombras suaves |
+| **Liquid Glass** | Glassmorphism con efectos liquidos |
+| **Gradient Mesh** | Gradientes mesh complejos |
+| **Bento Grid** | Layout de grids asimetricos |
+
+---
+
+## Instalacion (2 minutos)
+
+### 1. Clona el repositorio
+```bash
+git clone https://github.com/saas-factory-community/saas-factory-setup.git
+cd saas-factory-setup
+```
+
+### 2. Abre en Claude Code
+```bash
+claude .
+```
+
+### 3. Pide que configure el alias
+```
+Configura el alias "saas-factory" en mi terminal
+```
+
+Claude Code detecta tu sistema (zsh/bash) y configura todo automaticamente.
+
+---
+
+## De 0 a Produccion
+
+### 1. Crear proyecto
+```bash
+mkdir mi-saas && cd mi-saas
+saas-factory
+```
+
+### 2. Instalar y configurar
+```bash
+npm install
+cp .env.local.example .env.local  # Agrega credenciales de Supabase
+```
+
+### 3. Prender el MCP
+```bash
+npm run dev
+# Output: - MCP Server: http://localhost:3000/_next/mcp
+```
+
+### 4. Conectar Claude Code
+```bash
+claude .  # En otra terminal
+```
+
+### 5. Definir el negocio
+```
+/new-app
+```
+
+Responde las preguntas. El agente genera `BUSINESS_LOGIC.md`.
+
+### 6. Construir
+```
+Implementa las features segun BUSINESS_LOGIC.md
+```
+
+La IA usa los MCPs para ver errores en tiempo real mientras construye.
+
+---
+
+## Auto-Blindaje
+
+Cada error refuerza la fabrica. El mismo error NUNCA ocurre dos veces.
+
+```
+Error ocurre → Se arregla → Se DOCUMENTA → NUNCA ocurre de nuevo
+```
+
+Con el **Memory Manager**, los errores y patrones descubiertos se guardan en `.claude/memory/` y viajan con el proyecto. Tu fabrica se hace mas inteligente con cada sesion.
+
+---
+
+## FAQ
+
+**Por que solo Next.js?**
+Hace el 100% del trabajo para el 95% de los SaaS B2B. No necesitas Python ni backends separados.
+
+**Puedo personalizar?**
+Si. Todo esta disenado para ser extendido. `CLAUDE.md` es tu punto de entrada. Crea nuevos skills con `/skill-creator`.
+
+**Como actualizo?**
+```
+/update-sf
+```
+
+**Como remuevo SaaS Factory?**
+```
+/eject-sf
+```
+Te deja con un proyecto Next.js limpio y funcional.
+
+---
+
+## Documentacion
+
+| Archivo | Descripcion |
+|---------|-------------|
+| `saas-factory/CLAUDE.md` | Factory OS — Cerebro del agente (decision tree + skills) |
+| `saas-factory/GEMINI.md` | Espejo para Gemini |
+| `saas-factory/.claude/skills/SKILLS_README.md` | Inventario completo de 22 skills |
+| `saas-factory/.claude/skills/ai/references/` | 11 AI Templates (chat, RAG, vision, tools...) |
+| `saas-factory/.claude/PRPs/` | Sistema de Blueprints |
+| `saas-factory/.claude/design-systems/` | 5 sistemas de diseno |
+| `saas-factory/.claude/memory/` | Memoria persistente del proyecto |
+
+---
+
+<p align="center">
+  <strong>SaaS Factory V4</strong> — Todo es un Skill. Agent-First. 22 skills. Memoria persistente.<br/>
+  De la idea a produccion en minutos, no en meses.
+</p>
