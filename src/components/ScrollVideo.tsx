@@ -24,6 +24,7 @@ export default function ScrollVideo() {
   const progressRef = useRef(0)
   const textsRef = useRef<(HTMLDivElement | null)[]>([])
   const [loadState, setLoadState] = useState<'loading' | 'ready' | 'error'>('loading')
+  const [loadedCount, setLoadedCount] = useState(0)
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -73,6 +74,7 @@ export default function ScrollVideo() {
 
       img.onload = () => {
         loadedCountRef.current++
+        setLoadedCount(loadedCountRef.current)
         // Draw first frame as soon as it's ready
         if (loadedCountRef.current === 1) {
           lastFrameRef.current = 0
@@ -183,14 +185,17 @@ export default function ScrollVideo() {
         {/* Loading indicator */}
         {loadState === 'loading' && (
           <div style={{
-            position: 'absolute', inset: 0,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '12px',
           }}>
             <div style={{
               width: '40px', height: '2px',
               backgroundColor: 'var(--sage)',
               animation: 'pulse 1.5s ease-in-out infinite',
             }} />
+            <p style={{ color: 'var(--sage)', fontSize: '10px', letterSpacing: '0.2em', fontFamily: 'var(--font-poppins)' }}>
+              {loadedCount}/{120}
+            </p>
           </div>
         )}
 
