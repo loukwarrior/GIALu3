@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 const NARRATIVE = [
   { text: 'Comida real.', start: 0.05, end: 0.25 },
@@ -16,6 +16,7 @@ export default function ScrollVideo() {
   const textsRef = useRef<(HTMLDivElement | null)[]>([])
   const progressRef = useRef(0)
   const rafRef = useRef<number | null>(null)
+  const [videoStatus, setVideoStatus] = useState<'loading' | 'ready' | 'error'>('loading')
 
   useEffect(() => {
     const video = videoRef.current
@@ -93,12 +94,24 @@ export default function ScrollVideo() {
         }}
       >
         {/* Video fills sticky area */}
+        {/* Debug overlay - shows video status */}
+        <div style={{
+          position: 'absolute', top: 10, left: 10, zIndex: 99,
+          background: 'rgba(0,0,0,0.7)', color: 'white',
+          fontSize: '11px', padding: '4px 8px', borderRadius: '4px',
+          fontFamily: 'monospace',
+        }}>
+          video: {videoStatus}
+        </div>
+
         <video
           ref={videoRef}
           src="/videos/videoGIA_hero.mp4"
           muted
           playsInline
           preload="auto"
+          onLoadedMetadata={() => setVideoStatus('ready')}
+          onError={() => setVideoStatus('error')}
           style={{
             position: 'absolute',
             top: '50%',
