@@ -2,6 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react'
 
+const FRAME_COUNT = 120
+const FRAME_PATH = '/frames/frame_'
+
 const NARRATIVE = [
   { text: 'Comida real.', start: 0.05, end: 0.25 },
   { text: 'Hecha con amor.', start: 0.23, end: 0.43 },
@@ -12,39 +15,95 @@ const NARRATIVE = [
 
 export default function ScrollVideo() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const videoRef = useRef<HTMLVideoElement>(null)
-  const textsRef = useRef<(HTMLDivElement | null)[]>([])
-  const progressRef = useRef(0)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const framesRef = useRef<HTMLImageElement[]>([])
+  const loadedCountRef = useRef(0)
+  const lastFrameRef = useRef(-1)
   const rafRef = useRef<number | null>(null)
-  const [videoStatus, setVideoStatus] = useState<'loading' | 'ready' | 'error'>('loading')
+  const progressRef = useRef(0)
+  const textsRef = useRef<(HTMLDivElement | null)[]>([])
+  const [ready, setReady] = useState(false)
 
   useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
 
-    // Update video time and text overlays
-    const update = () => {
-      const progress = progressRef.current
-      const video = videoRef.current
-      if (video && video.duration && isFinite(video.duration)) {
-        video.currentTime = progress * video.duration
+    const setCanvasSize = () => {
+      const dpr = window.devicePixelRatio || 1
+      canvas.width = window.innerWidth * dpr
+      canvas.height = window.innerHeight * dpr
+      canvas.style.width = '100%'
+      canvas.style.height = '100%'
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
+      if (lastFrameRef.current >= 0 && framesRef.current[lastFrameRef.current]) {
+        drawFrame(lastFrameRef.current)
+      }
+    }
+
+    const drawFrame = (index: number) => {
+      const img = framesRef.current[index]
+      if (!img?.complete || img.naturalWidth === 0) return
+      const W = window.innerWidth
+      const H = window.innerHeight
+      const scale = Math.max(W / img.naturalWidth, H / img.naturalHeight)
+      const w = img.naturalWidth * scale
+      const h = img.naturalHeight * scale
+      ctx.clearRect(0, 0, W, H)
+      ctx.drawImage(img, (W - w) / 2, (H - h) / 2, w, h)
+    }
+
+    for (let i = 1; i <= FRAME_COUNT; i++) {
+      const img = new window.Image()
+      img.src = `${FRAME_PATH}${String(i).padStart(4, '0')}.jpg`
+      img.onload = () => {
+        loadedCountRef.current++
+        if (loadedCountRef.current === 1) {
+          lastFrameRef.current = 0
+          drawFrame(0)
+          setReady(true)
+        }
+      }
+      framesRef.current.push(img)
+    }
+
+    setCanvasSize()
+    window.addEventListener('resize', setCanvasSize, { passive: true })
+
+    const onScroll = () => {
+      const container = containerRef.current
+      if (!container) return
+      const { top, height } = container.getBoundingClientRect()
+      const scrollable = height - window.innerHeight
+      progressRef.current = Math.max(0, Math.min(1, -top / scrollable))
+
+      const frameIndex = Math.min(
+        Math.floor(progressRef.current * FRAME_COUNT),
+        FRAME_COUNT - 1
+      )
+
+      if (frameIndex !== lastFrameRef.current) {
+        lastFrameRef.current = frameIndex
+        if (rafRef.current) cancelAnimationFrame(rafRef.current)
+        rafRef.current = requestAnimationFrame(() => drawFrame(frameIndex))
       }
 
-      // Narrative text opacity
       textsRef.current.forEach((el, i) => {
         if (!el) return
         const { start, end } = NARRATIVE[i]
         const zone = 0.07
+        const p = progressRef.current
         let opacity = 0
         let ty = 18
 
-        if (progress >= start && progress <= end) {
-          if (progress < start + zone) {
-            const t = (progress - start) / zone
+        if (p >= start && p <= end) {
+          if (p < start + zone) {
+            const t = (p - start) / zone
             opacity = t
             ty = 18 * (1 - t)
-          } else if (progress > end - zone) {
-            const t = (end - progress) / zone
+          } else if (p > end - zone) {
+            const t = (end - p) / zone
             opacity = t
             ty = -14 * (1 - t)
           } else {
@@ -58,72 +117,39 @@ export default function ScrollVideo() {
       })
     }
 
-    const onScroll = () => {
-      const container = containerRef.current
-      if (!container) return
-      const { top, height } = container.getBoundingClientRect()
-      const scrollable = height - window.innerHeight
-      progressRef.current = Math.max(0, Math.min(1, -top / scrollable))
-
-      if (rafRef.current) cancelAnimationFrame(rafRef.current)
-      rafRef.current = requestAnimationFrame(update)
-    }
-
     window.addEventListener('scroll', onScroll, { passive: true })
     onScroll()
 
     return () => {
+      window.removeEventListener('resize', setCanvasSize)
       window.removeEventListener('scroll', onScroll)
       if (rafRef.current) cancelAnimationFrame(rafRef.current)
     }
   }, [])
 
   return (
-    <section
-      ref={containerRef}
-      style={{ position: 'relative', height: '400vh' }}
-    >
-      <div
-        style={{
-          position: 'sticky',
-          top: 0,
-          width: '100%',
-          height: '100vh',
-          overflow: 'hidden',
-          backgroundColor: '#000',
-        }}
-      >
-        {/* Video fills sticky area */}
-        {/* Debug overlay - shows video status */}
-        <div style={{
-          position: 'absolute', top: 10, left: 10, zIndex: 99,
-          background: 'rgba(0,0,0,0.7)', color: 'white',
-          fontSize: '11px', padding: '4px 8px', borderRadius: '4px',
-          fontFamily: 'monospace',
-        }}>
-          video: {videoStatus}
-        </div>
-
-        <video
-          ref={videoRef}
-          src="/videos/videoGIA_hero.mp4"
-          muted
-          playsInline
-          preload="auto"
-          onLoadedMetadata={() => setVideoStatus('ready')}
-          onError={() => setVideoStatus('error')}
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            minWidth: '100%',
-            minHeight: '100%',
-            width: 'auto',
-            height: 'auto',
-            objectFit: 'cover',
-          }}
+    <section ref={containerRef} style={{ position: 'relative', height: '400vh' }}>
+      <div style={{
+        position: 'sticky', top: 0, width: '100%', height: '100vh',
+        overflow: 'hidden', backgroundColor: 'var(--cream)',
+      }}>
+        <canvas
+          ref={canvasRef}
+          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', display: 'block' }}
         />
+
+        {!ready && (
+          <div style={{
+            position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <div style={{
+              width: '40px', height: '2px',
+              backgroundColor: 'var(--sage)',
+              animation: 'pulse 1.5s ease-in-out infinite',
+            }} />
+          </div>
+        )}
 
         {/* Top gradient */}
         <div style={{
@@ -132,12 +158,10 @@ export default function ScrollVideo() {
           pointerEvents: 'none', zIndex: 1,
         }} />
 
-        {/* Narrative text overlay */}
+        {/* Narrative text */}
         <div style={{
           position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 2,
-          display: 'flex', alignItems: 'center',
-          padding: '0 6vw', pointerEvents: 'none',
-          justifyContent: 'flex-end',
+          pointerEvents: 'none',
         }}>
           {NARRATIVE.map((n, i) => (
             <div
@@ -146,8 +170,9 @@ export default function ScrollVideo() {
               style={{
                 position: 'absolute',
                 right: '6vw',
+                top: '50%',
+                transform: 'translateY(18px)',
                 opacity: 0,
-                transition: 'none',
                 textAlign: 'right',
                 whiteSpace: 'pre-line',
                 fontFamily: 'var(--font-playfair)',
@@ -156,8 +181,9 @@ export default function ScrollVideo() {
                   : 'clamp(26px, 3.5vw, 52px)',
                 fontWeight: 700,
                 lineHeight: 1.1,
-                color: i === NARRATIVE.length - 1 ? 'var(--cream)' : 'white',
-                textShadow: '0 2px 32px rgba(0,0,0,0.5)',
+                color: i === NARRATIVE.length - 1 ? 'var(--forest)' : 'var(--charcoal)',
+                textShadow: '0 1px 24px rgba(251,249,246,0.9), 0 0 48px rgba(251,249,246,0.6)',
+                marginTop: '-0.5em',
               }}
             >
               {n.text}
